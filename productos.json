@@ -1,0 +1,122 @@
+[
+    {
+        "precio": 990,
+        "id": 1,
+        "title": "TOKYO REVENGERS #02",
+        "thumbnailUrl": "./assets/img/tokyo-revengers-2.jpg"
+    },
+    {
+        "precio": 990,
+        "id": 2,
+        "title": "CHAINSAW MAN #01",
+        "thumbnailUrl": "./assets/img/chainsaw-man-1.jpg"
+    },
+    {
+        "precio": 990,
+        "id": 3,
+        "title": "CHAINSAW MAN #02",
+        "thumbnailUrl": "./assets/img/chainsaw-man-2.jpg"
+    },
+    {
+        "precio": 990,
+        "id": 4,
+        "title": "CHAINSAW MAN #04",
+        "thumbnailUrl": "./assets/img/chainsaw-man-4.jpg"
+    },
+    {
+        "precio": 990,
+        "id": 5,
+        "title": "CHAINSAW MAN #05",
+        "thumbnailUrl": "./assets/img/chainsaw-man-5.jpg"
+    },
+    {
+        "precio": 990,
+        "id": 6,
+        "title": "HAIKYU!! #01",
+        "thumbnailUrl": "./assets/img/haikyu-01.jpg"
+    },
+    {
+        "precio": 990,
+        "id": 7,
+        "title": "TOKYO REVENGERS #01",
+        "thumbnailUrl": "./assets/img/tokyo-revengers-1.jpg"
+    },
+    {
+        "precio": 150,
+        "id": 8,
+        "title": "CHAINSAW MAN #07",
+        "thumbnailUrl": "./assets/img/chainsaw-man-7.jpg"
+    },
+    {
+        "precio": 990,
+        "id": 9,
+        "title": "CHAINSAW MAN #06",
+        "thumbnailUrl": "./assets/img/chainsaw-man-6.jpg"
+    },
+    {
+        "precio": 990,
+        "id": 10,
+        "title": "CHAINSAW MAN #08",
+        "thumbnailUrl": "./assets/img/chainsaw-man-8.jpg"
+    },
+    {
+        "precio": 990,
+        "id": 11,
+        "title": "HAIKYU!! #02",
+        "thumbnailUrl": "./assets/img/haikyu-02.jpg"
+    },
+    {
+        "precio": 990,
+        "id": 12,
+        "title": "CHAINSAW MAN #09",
+        "thumbnailUrl": "./assets/img/chainsaw-man-9.jpg"
+    },
+    {
+        "precio": 1100,
+        "id": 13,
+        "title": "JUJUTSU KAISEN #00",
+        "thumbnailUrl": "./assets/img/jujutsu-kaisen-00.webp"
+    },
+    {
+        "precio": 990,
+        "id": 14,
+        "title": "HAIKYU!! #03",
+        "thumbnailUrl": "./assets/img/haikyu-03.jpg"
+    },
+    {
+        "precio": 990,
+        "id": 15,
+        "title": "CHAINSAW MAN #10",
+        "thumbnailUrl": "./assets/img/chainsaw-man-10.jpg"
+    },
+    {
+        "precio": 990,
+        "id": 16,
+        "title": "TOKYO REVENGERS #03",
+        "thumbnailUrl": "./assets/img/jujutsu-kaisen-03.jpg"
+    },
+    {
+        "precio": 1100,
+        "id": 17,
+        "title": "JUJUTSU KAISEN #02",
+        "thumbnailUrl": "./assets/img/jujutsu-kaisen-02.webp"
+    },
+    {
+        "precio": 990,
+        "id": 18,
+        "title": "HAIKYU!! #05",
+        "thumbnailUrl": "./assets/img/haikyu-05.jpg"
+    },
+    {
+        "precio": 1100,
+        "id": 19,
+        "title": "JUJUTSU KAISEN #01",
+        "thumbnailUrl": "./assets/img/jujutsu-kaisen-01.jpg"
+    },
+    {
+        "precio": 1500,
+        "id": 20,
+        "title": "CLASSROOM OF THE ELITE #01",
+        "thumbnailUrl": "./assets/img/clasrroom-of-the-elite-1.webp"
+    }
+]
