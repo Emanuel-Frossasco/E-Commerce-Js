@@ -1,0 +1,22 @@
+{
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "description": "proyecto js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emanuel-Frossasco/e-commerce.git"
+  },
+  "author": "Emanuel Frossasco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emanuel-Frossasco/e-commerce/issues"
+  },
+  "homepage": "https://github.com/Emanuel-Frossasco/e-commerce#readme",
+  "dependencies": {
+    "luxon": "^3.1.0"
+  }
+}
