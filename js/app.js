@@ -201,8 +201,7 @@ const eventoBotones = (data) => {
             renderCartSidebar();
             guardarCarrito();
             actualizarContadorCarrito();
-            mostrarNotificacion(`${producto.title} agregado al carrito`, "success");
-            openCartSidebar();
+            mostrarNotificacion(`${producto.title} agregado al carrito`, "success", producto.thumbnailUrl);
         });
     });
 
@@ -366,18 +365,86 @@ const mostrarModalCompra = () => {
     };
 };
 
-const mostrarNotificacion = (mensaje, tipo = "success") => {
+const mostrarNotificacion = (mensaje, tipo = "success", productoImg = null) => {
     const colores = {
-        success: "linear-gradient(to right, #00b09b, #96c93d)",
-        error: "linear-gradient(to right, #ff5f6d, #ffc371)",
-        info: "linear-gradient(to right, #4facfe, #00f2fe)"
+        success: "linear-gradient(135deg, #43ed00 0%, #06c000 100%)",
+        error: "linear-gradient(135deg, #ff4757 0%, #ff6348 100%)",
+        info: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
     };
+
+    const iconos = {
+        success: "✓",
+        error: "✕",
+        info: "ℹ"
+    };
+
+    let notificationHTML = `
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            ${productoImg ? `<img src="${productoImg}" style="width: 50px; height: 70px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">` : ''}
+            <div style="flex: 1;">
+                <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">${iconos[tipo] || iconos.success}</div>
+                <div style="font-weight: 600;">${mensaje}</div>
+            </div>
+        </div>
+    `;
+
     Toastify({
         text: mensaje,
-        duration: 2500,
+        duration: 3500,
         position: "right",
-        style: { background: colores[tipo] || colores.success },
+        gravity: "top",
+        stopOnFocus: true,
+        escapeMarkup: false,
+        node: productoImg ? createNotificationNode(mensaje, tipo, productoImg) : undefined,
+        style: {
+            background: colores[tipo] || colores.success,
+            borderRadius: "15px",
+            padding: "1rem 1.5rem",
+            fontSize: "1rem",
+            fontWeight: "600",
+            boxShadow: "0 8px 24px rgba(0, 0, 0, 0.25)",
+            minWidth: "300px"
+        },
+        offset: {
+            x: 20,
+            y: 20
+        }
     }).showToast();
+};
+
+const createNotificationNode = (mensaje, tipo, productoImg) => {
+    const iconos = {
+        success: "✓",
+        error: "✕",
+        info: "ℹ"
+    };
+
+    const div = document.createElement('div');
+    div.style.cssText = 'display: flex; align-items: center; gap: 1rem;';
+
+    if (productoImg) {
+        const img = document.createElement('img');
+        img.src = productoImg;
+        img.style.cssText = 'width: 50px; height: 70px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);';
+        div.appendChild(img);
+    }
+
+    const contentDiv = document.createElement('div');
+    contentDiv.style.cssText = 'flex: 1;';
+
+    const icon = document.createElement('div');
+    icon.style.cssText = 'font-size: 1.5rem; margin-bottom: 0.25rem;';
+    icon.textContent = iconos[tipo] || iconos.success;
+
+    const text = document.createElement('div');
+    text.style.cssText = 'font-weight: 600;';
+    text.textContent = mensaje;
+
+    contentDiv.appendChild(icon);
+    contentDiv.appendChild(text);
+    div.appendChild(contentDiv);
+
+    return div;
 };
 
 const setupSortListener = () => {
@@ -544,10 +611,9 @@ const mostrarQuickView = (producto) => {
         renderCartSidebar();
         guardarCarrito();
         actualizarContadorCarrito();
-        mostrarNotificacion(`${producto.title} agregado al carrito`, "success");
+        mostrarNotificacion(`${producto.title} agregado al carrito`, "success", producto.thumbnailUrl);
         const modal = bootstrap.Modal.getInstance(document.getElementById('modal-quick-view'));
         modal.hide();
-        openCartSidebar();
     };
     const modal = new bootstrap.Modal(document.getElementById('modal-quick-view'));
     modal.show();
