@@ -137,11 +137,26 @@
     <template id="template-producto">
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
         <div class="card">
+          <!-- Badges Container -->
+          <div class="product-badges">
+            <span class="badge-new" style="display: none;">NUEVO</span>
+            <span class="badge-discount" style="display: none;"></span>
+          </div>
           <img src="" alt="" class="card-img-top" />
           <div class="card-body">
             <h5 class="card-title"></h5>
-            <p class="card-text">$ <span></span></p>
-            <button class="btn btn-dark">Agregar al carrito</button>
+            <div class="price-container">
+              <p class="original-price" style="display: none;">$<span class="original-price-value"></span></p>
+              <p class="card-text current-price">$ <span class="current-price-value"></span></p>
+            </div>
+            <div class="card-buttons">
+              <button class="btn btn-dark btn-add-cart" title="Agregar al carrito">
+                <i class='bx bx-cart-add'></i>
+              </button>
+              <button class="btn btn-quick-view" title="Vista rápida">
+                <i class='bx bx-show'></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -267,6 +282,43 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           <button type="button" class="btn btn-success" id="confirmar-compra">Confirmar Compra</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Vista Rápida -->
+  <div class="modal fade" id="modal-quick-view" tabindex="-1" aria-labelledby="modalQuickViewLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content quick-view-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalQuickViewLabel">Vista Rápida</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="" alt="" class="quick-view-img" id="quick-view-img">
+            </div>
+            <div class="col-md-6">
+              <h3 class="quick-view-title" id="quick-view-title"></h3>
+              <div class="quick-view-badges" id="quick-view-badges">
+                <!-- Badges dinámicos -->
+              </div>
+              <p class="quick-view-description" id="quick-view-description"></p>
+              <div class="quick-view-price-container">
+                <p class="quick-view-original-price" id="quick-view-original-price" style="display: none;">
+                  $<span id="quick-view-original-price-value"></span>
+                </p>
+                <p class="quick-view-current-price" id="quick-view-current-price">
+                  $<span id="quick-view-current-price-value"></span>
+                </p>
+              </div>
+              <button class="btn btn-add-to-cart-quick" id="btn-add-to-cart-quick">
+                <i class='bx bx-cart'></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

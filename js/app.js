@@ -129,10 +129,45 @@ const pintarProductos = (data) => {
     const fragment = new DocumentFragment();
     data.forEach((producto) => {
         const clone = template.content.cloneNode(true);
+
+        // Image
         clone.querySelector("img").setAttribute("src", producto.thumbnailUrl);
+
+        // Title
         clone.querySelector("h5").textContent = producto.title;
-        clone.querySelector(".card-text span").textContent = producto.precio;
-        clone.querySelector("button").setAttribute("data-id", producto.id);
+
+        // Badges
+        const badgeNew = clone.querySelector(".badge-new");
+        const badgeDiscount = clone.querySelector(".badge-discount");
+
+        if (producto.isNew) {
+            badgeNew.style.display = "block";
+        }
+
+        if (producto.discount) {
+            badgeDiscount.textContent = `-${producto.discount}%`;
+            badgeDiscount.style.display = "block";
+        }
+
+        // Prices
+        const originalPriceEl = clone.querySelector(".original-price");
+        const originalPriceValue = clone.querySelector(".original-price-value");
+        const currentPriceValue = clone.querySelector(".current-price-value");
+
+        if (producto.discount && producto.originalPrice) {
+            originalPriceEl.style.display = "block";
+            originalPriceValue.textContent = producto.originalPrice;
+        }
+
+        currentPriceValue.textContent = producto.precio;
+
+        // Buttons
+        const btnAddCart = clone.querySelector(".btn-add-cart");
+        const btnQuickView = clone.querySelector(".btn-quick-view");
+
+        btnAddCart.setAttribute("data-id", producto.id);
+        btnQuickView.setAttribute("data-id", producto.id);
+
         fragment.appendChild(clone);
     });
 
@@ -140,7 +175,8 @@ const pintarProductos = (data) => {
 };
 
 const eventoBotones = (data) => {
-    const btnAgregar = document.querySelectorAll(".btn-dark");
+    // Add to Cart buttons
+    const btnAgregar = document.querySelectorAll(".btn-add-cart");
     btnAgregar.forEach((btn) => {
         btn.addEventListener("click", () => {
             const [producto] = data.filter(
@@ -166,6 +202,17 @@ const eventoBotones = (data) => {
             actualizarContadorCarrito();
             mostrarNotificacion(`${producto.title} agregado al carrito`, "success");
             openCartSidebar();
+        });
+    });
+
+    // Quick View buttons
+    const btnQuickView = document.querySelectorAll(".btn-quick-view");
+    btnQuickView.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const [producto] = data.filter(
+                (item) => item.id === parseInt(btn.dataset.id)
+            );
+            mostrarQuickView(producto);
         });
     });
 };
@@ -408,4 +455,81 @@ const initCarousel = () => {
 
     // Start auto slide
     startAutoSlide();
+};
+
+// ===== QUICK VIEW FUNCTIONALITY =====
+const mostrarQuickView = (producto) => {
+    // Populate modal with product data
+    document.getElementById('quick-view-img').src = producto.thumbnailUrl;
+    document.getElementById('quick-view-title').textContent = producto.title;
+    document.getElementById('quick-view-description').textContent = producto.description || 'Descripción no disponible';
+
+    // Badges
+    const badgesContainer = document.getElementById('quick-view-badges');
+    badgesContainer.innerHTML = '';
+
+    if (producto.isNew) {
+        const badgeNew = document.createElement('span');
+        badgeNew.className = 'badge-new';
+        badgeNew.textContent = 'NUEVO';
+        badgesContainer.appendChild(badgeNew);
+    }
+
+    if (producto.discount) {
+        const badgeDiscount = document.createElement('span');
+        badgeDiscount.className = 'badge-discount';
+        badgeDiscount.textContent = `-${producto.discount}%`;
+        badgesContainer.appendChild(badgeDiscount);
+    }
+
+    // Prices
+    const originalPriceEl = document.getElementById('quick-view-original-price');
+    const originalPriceValue = document.getElementById('quick-view-original-price-value');
+    const currentPriceValue = document.getElementById('quick-view-current-price-value');
+
+    if (producto.discount && producto.originalPrice) {
+        originalPriceEl.style.display = 'block';
+        originalPriceValue.textContent = producto.originalPrice;
+    } else {
+        originalPriceEl.style.display = 'none';
+    }
+
+    currentPriceValue.textContent = producto.precio;
+
+    // Add to cart button
+    const btnAddToCart = document.getElementById('btn-add-to-cart-quick');
+    btnAddToCart.onclick = () => {
+        const productoCarrito = {
+            id: producto.id,
+            title: producto.title,
+            precio: producto.precio,
+            thumbnailUrl: producto.thumbnailUrl,
+            cantidad: 1,
+            precioTotal: producto.precio,
+        };
+
+        const index = carrito.findIndex((item) => item.id === productoCarrito.id);
+        if (index === -1) {
+            carrito.push(productoCarrito);
+        } else {
+            carrito[index].cantidad++;
+            carrito[index].precioTotal = carrito[index].cantidad * carrito[index].precio;
+        }
+
+        renderCartSidebar();
+        guardarCarrito();
+        actualizarContadorCarrito();
+        mostrarNotificacion(`${producto.title} agregado al carrito`, "success");
+
+        // Close quick view modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('modal-quick-view'));
+        modal.hide();
+
+        // Open cart sidebar
+        openCartSidebar();
+    };
+
+    // Show modal
+    const modal = new bootstrap.Modal(document.getElementById('modal-quick-view'));
+    modal.show();
 };

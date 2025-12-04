@@ -3,120 +3,158 @@
         "precio": 990,
         "id": 1,
         "title": "TOKYO REVENGERS #02",
-        "thumbnailUrl": "./assets/img/tokyo-revengers-2.jpg"
+        "thumbnailUrl": "./assets/img/tokyo-revengers-2.jpg",
+        "isNew": true,
+        "description": "Takemichi viaja al pasado para salvar a sus amigos de un destino trágico. Acción, drama y pandillas en esta emocionante historia."
     },
     {
         "precio": 990,
         "id": 2,
         "title": "CHAINSAW MAN #01",
-        "thumbnailUrl": "./assets/img/chainsaw-man-1.jpg"
+        "thumbnailUrl": "./assets/img/chainsaw-man-1.jpg",
+        "isNew": true,
+        "discount": 20,
+        "originalPrice": 1238,
+        "description": "Denji es un joven cazador de demonios que se fusiona con su perro-motosierra Pochita. ¡El inicio de una saga épica!"
     },
     {
         "precio": 990,
         "id": 3,
         "title": "CHAINSAW MAN #02",
-        "thumbnailUrl": "./assets/img/chainsaw-man-2.jpg"
+        "thumbnailUrl": "./assets/img/chainsaw-man-2.jpg",
+        "description": "Denji se une a los cazadores de demonios oficiales. Más acción y revelaciones impactantes."
     },
     {
         "precio": 990,
         "id": 4,
         "title": "CHAINSAW MAN #04",
-        "thumbnailUrl": "./assets/img/chainsaw-man-4.jpg"
+        "thumbnailUrl": "./assets/img/chainsaw-man-4.jpg",
+        "discount": 15,
+        "originalPrice": 1165,
+        "description": "La batalla contra el demonio de la eternidad. Tensión y horror en cada página."
     },
     {
         "precio": 990,
         "id": 5,
         "title": "CHAINSAW MAN #05",
-        "thumbnailUrl": "./assets/img/chainsaw-man-5.jpg"
+        "thumbnailUrl": "./assets/img/chainsaw-man-5.jpg",
+        "description": "Nuevos enemigos aparecen. Denji enfrenta sus desafíos más difíciles hasta ahora."
     },
     {
         "precio": 990,
         "id": 6,
         "title": "HAIKYU!! #01",
-        "thumbnailUrl": "./assets/img/haikyu-01.jpg"
+        "thumbnailUrl": "./assets/img/haikyu-01.jpg",
+        "discount": 25,
+        "originalPrice": 1320,
+        "description": "Hinata Shoyo sueña con ser un gran jugador de voleibol a pesar de su baja estatura. ¡El comienzo de una aventura deportiva!"
     },
     {
         "precio": 990,
         "id": 7,
         "title": "TOKYO REVENGERS #01",
-        "thumbnailUrl": "./assets/img/tokyo-revengers-1.jpg"
+        "thumbnailUrl": "./assets/img/tokyo-revengers-1.jpg",
+        "description": "El primer volumen de la saga de viajes en el tiempo. Takemichi descubre su poder."
     },
     {
-        "precio": 150,
+        "precio": 990,
         "id": 8,
         "title": "CHAINSAW MAN #07",
-        "thumbnailUrl": "./assets/img/chainsaw-man-7.jpg"
+        "thumbnailUrl": "./assets/img/chainsaw-man-7.jpg",
+        "discount": 30,
+        "originalPrice": 1414,
+        "description": "¡OFERTA ESPECIAL! Continúa la saga con este volumen a precio increíble."
     },
     {
         "precio": 990,
         "id": 9,
         "title": "CHAINSAW MAN #06",
-        "thumbnailUrl": "./assets/img/chainsaw-man-6.jpg"
+        "thumbnailUrl": "./assets/img/chainsaw-man-6.jpg",
+        "description": "El arco de Katana Man. Acción intensa y giros inesperados."
     },
     {
         "precio": 990,
         "id": 10,
         "title": "CHAINSAW MAN #08",
-        "thumbnailUrl": "./assets/img/chainsaw-man-8.jpg"
+        "thumbnailUrl": "./assets/img/chainsaw-man-8.jpg",
+        "description": "La historia se intensifica con nuevos demonios y aliados inesperados."
     },
     {
         "precio": 990,
         "id": 11,
         "title": "HAIKYU!! #02",
-        "thumbnailUrl": "./assets/img/haikyu-02.jpg"
+        "thumbnailUrl": "./assets/img/haikyu-02.jpg",
+        "discount": 10,
+        "originalPrice": 1100,
+        "description": "Hinata y Kageyama forman un dúo imparable. ¡El trabajo en equipo es la clave!"
     },
     {
         "precio": 990,
         "id": 12,
         "title": "CHAINSAW MAN #09",
-        "thumbnailUrl": "./assets/img/chainsaw-man-9.jpg"
+        "thumbnailUrl": "./assets/img/chainsaw-man-9.jpg",
+        "description": "Revelaciones impactantes sobre el pasado de Denji y su conexión con Makima."
     },
     {
         "precio": 1100,
         "id": 13,
         "title": "JUJUTSU KAISEN #00",
-        "thumbnailUrl": "./assets/img/jujutsu-kaisen-00.webp"
+        "thumbnailUrl": "./assets/img/jujutsu-kaisen-00.webp",
+        "discount": 15,
+        "originalPrice": 1294,
+        "description": "La precuela de Jujutsu Kaisen. Descubre el pasado de Yuta Okkotsu y su maldición."
     },
     {
         "precio": 990,
         "id": 14,
         "title": "HAIKYU!! #03",
-        "thumbnailUrl": "./assets/img/haikyu-03.jpg"
+        "thumbnailUrl": "./assets/img/haikyu-03.jpg",
+        "description": "El equipo de Karasuno se prepara para su primer torneo oficial."
     },
     {
         "precio": 990,
         "id": 15,
         "title": "CHAINSAW MAN #10",
-        "thumbnailUrl": "./assets/img/chainsaw-man-10.jpg"
+        "thumbnailUrl": "./assets/img/chainsaw-man-10.jpg",
+        "description": "El clímax del primer arco. Batallas épicas y sacrificios heroicos."
     },
     {
         "precio": 990,
         "id": 16,
         "title": "JUJUTSU KAISEN #03",
-        "thumbnailUrl": "./assets/img/jujutsu-kaisen-03.jpg"
+        "thumbnailUrl": "./assets/img/jujutsu-kaisen-03.jpg",
+        "description": "Yuji enfrenta maldiciones cada vez más poderosas mientras aprende a controlar su poder."
     },
     {
         "precio": 1100,
         "id": 17,
         "title": "JUJUTSU KAISEN #02",
-        "thumbnailUrl": "./assets/img/jujutsu-kaisen-02.webp"
+        "thumbnailUrl": "./assets/img/jujutsu-kaisen-02.webp",
+        "discount": 20,
+        "originalPrice": 1375,
+        "description": "Yuji Itadori continúa su entrenamiento como hechicero. Nuevos aliados y enemigos aparecen."
     },
     {
         "precio": 990,
         "id": 18,
         "title": "HAIKYU!! #05",
-        "thumbnailUrl": "./assets/img/haikyu-05.jpg"
+        "thumbnailUrl": "./assets/img/haikyu-05.jpg",
+        "description": "El partido contra Aoba Johsai. Tensión y emoción en cada jugada."
     },
     {
         "precio": 1100,
         "id": 19,
         "title": "JUJUTSU KAISEN #01",
-        "thumbnailUrl": "./assets/img/jujutsu-kaisen-01.jpg"
+        "thumbnailUrl": "./assets/img/jujutsu-kaisen-01.jpg",
+        "description": "El inicio de la saga de hechicería. Yuji Itadori se convierte en el recipiente de Sukuna."
     },
     {
         "precio": 1500,
         "id": 20,
         "title": "CLASSROOM OF THE ELITE #01",
-        "thumbnailUrl": "./assets/img/clasrroom-of-the-elite-1.webp"
+        "thumbnailUrl": "./assets/img/clasrroom-of-the-elite-1.webp",
+        "discount": 10,
+        "originalPrice": 1667,
+        "description": "En una academia de élite, Ayanokoji Kiyotaka oculta su verdadero potencial. Estrategia, intriga y competencia."
     }
 ]

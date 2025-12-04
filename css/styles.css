@@ -424,7 +424,7 @@ body {
   width: 100%;
   height: 150px;
   margin-bottom: 10px;
-  padding: 1rem;
+  padding: 1.5rem 1rem 1rem 1rem;
 }
 
 .card .card-title {
@@ -433,7 +433,7 @@ body {
   color: var(--text-dark);
   text-align: center;
   padding: 0;
-  margin-top: 0;
+  margin-top: 0.5rem;
   font-weight: 600;
 }
 
@@ -467,6 +467,99 @@ body {
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== PRODUCT BADGES ===== */
+.product-badges {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.badge-new,
+.badge-discount {
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.badge-new {
+  background: var(--primary-color);
+  color: var(--text-dark);
+}
+
+.badge-discount {
+  background: #ff4757;
+  color: white;
+}
+
+/* ===== PRICE CONTAINER ===== */
+.price-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.original-price {
+  font-size: 0.9rem;
+  color: #999;
+  text-decoration: line-through;
+  margin: 0;
+}
+
+.current-price {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  text-align: center;
+  font-weight: 800;
+  margin: 0;
+}
+
+/* ===== CARD BUTTONS ===== */
+.card-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.btn-add-cart {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  padding: 0.5rem;
+}
+
+.btn-quick-view {
+  background: var(--primary-color);
+  border: none;
+  color: var(--text-dark);
+  flex: 1;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.3rem;
+}
+
+.btn-quick-view:hover {
+  background: #06c000;
+  transform: scale(1.05);
 }
 
 /* ===== CART OVERLAY ===== */
@@ -738,6 +831,97 @@ body {
 .btn-clear-cart:hover {
   background: #d32f2f;
   color: white;
+}
+
+/* ===== QUICK VIEW MODAL ===== */
+.quick-view-modal .modal-header {
+  background: var(--primary-color);
+  color: var(--text-dark);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.quick-view-modal .modal-content {
+  border-radius: 15px;
+  border: none;
+}
+
+.quick-view-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  max-height: 500px;
+}
+
+.quick-view-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.quick-view-badges {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.quick-view-badges .badge-new,
+.quick-view-badges .badge-discount {
+  display: inline-block;
+}
+
+.quick-view-description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.quick-view-price-container {
+  margin-bottom: 1.5rem;
+}
+
+.quick-view-original-price {
+  font-size: 1.1rem;
+  color: #999;
+  text-decoration: line-through;
+  margin: 0 0 0.5rem 0;
+}
+
+.quick-view-current-price {
+  font-size: 2rem;
+  color: var(--primary-color);
+  font-weight: 800;
+  margin: 0;
+}
+
+.btn-add-to-cart-quick {
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary-color);
+  color: var(--text-dark);
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-add-to-cart-quick:hover {
+  background: #06c000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(8, 237, 0, 0.3);
+}
+
+.btn-add-to-cart-quick i {
+  font-size: 1.3rem;
 }
 
 /* ===== MODAL ===== */
