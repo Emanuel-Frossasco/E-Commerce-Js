@@ -31,26 +31,70 @@
       <a class="navbar-brand" href="#">
         Manga Store
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+
+      <!-- Hamburger Menu Button for Mobile -->
+      <button class="btn-hamburger" id="btn-hamburger" aria-label="Menú">
+        <i class='bx bx-menu'></i>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="d-flex ms-auto align-items-center">
-          <div class="search-container">
-            <input class="form-control search-input" type="search" id="search-input" placeholder="Buscar manga..."
-              aria-label="Search">
-            <i class='bx bx-search search-icon'></i>
-          </div>
-          <!-- Cart Icon -->
-          <button class="cart-icon-btn" id="open-cart" aria-label="Abrir carrito">
-            <i class='bx bx-cart'></i>
-            <span class="cart-badge" id="cart-badge">0</span>
-          </button>
+
+      <div class="navbar-content d-flex align-items-center gap-3">
+        <div class="search-container">
+          <input class="form-control search-input" type="search" id="search-input" placeholder="Buscar manga..."
+            aria-label="Search">
+          <i class='bx bx-search search-icon'></i>
         </div>
       </div>
+
+      <!-- Cart Icon - Always visible -->
+      <button class="cart-icon-btn" id="open-cart" aria-label="Abrir carrito">
+        <i class='bx bx-cart'></i>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </button>
+    </div>
     </div>
   </nav>
+
+  <!-- Mobile Sidebar -->
+  <div class="mobile-sidebar" id="mobile-sidebar">
+    <div class="mobile-sidebar-header">
+      <h3>Menú</h3>
+      <button class="btn-close-sidebar" id="btn-close-sidebar" aria-label="Cerrar menú">
+        <i class='bx bx-x'></i>
+      </button>
+    </div>
+
+    <div class="mobile-sidebar-content">
+      <!-- Search in mobile -->
+      <div class="mobile-search">
+        <input class="form-control" type="search" id="mobile-search-input" placeholder="Buscar manga..."
+          aria-label="Search">
+        <i class='bx bx-search'></i>
+      </div>
+
+      <!-- Categories -->
+      <div class="mobile-categories">
+        <h4>Categorías</h4>
+        <div id="mobile-filtros-botones">
+          <!-- Los botones se generan dinámicamente -->
+        </div>
+      </div>
+
+      <!-- Sort -->
+      <div class="mobile-sort">
+        <h4>Ordenar por</h4>
+        <select id="mobile-sort-select" class="form-control">
+          <option value="default">Predeterminado</option>
+          <option value="price-asc">Precio: Menor a Mayor</option>
+          <option value="price-desc">Precio: Mayor a Menor</option>
+          <option value="popularity">Popularidad</option>
+          <option value="release-date">Fecha de Lanzamiento</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Sidebar Overlay -->
+  <div class="mobile-sidebar-overlay" id="mobile-sidebar-overlay"></div>
 
   <div class="carousel-container">
     <div class="carousel-wrapper">

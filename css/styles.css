@@ -142,6 +142,150 @@ body {
   animation: pulse 0.3s ease;
 }
 
+/* ===== HAMBURGER BUTTON ===== */
+.btn-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-hamburger:hover {
+  transform: scale(1.1);
+  color: #333;
+}
+
+/* ===== MOBILE SIDEBAR ===== */
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 300px;
+  height: 100vh;
+  background: white;
+  z-index: 9999;
+  transition: left 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.mobile-sidebar.active {
+  left: 0;
+}
+
+.mobile-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: var(--primary-color);
+  color: var(--text-dark);
+}
+
+.mobile-sidebar-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.btn-close-sidebar {
+  background: none;
+  border: none;
+  color: var(--text-dark);
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.3s ease;
+}
+
+.btn-close-sidebar:hover {
+  transform: rotate(90deg);
+}
+
+.mobile-sidebar-content {
+  padding: 1.5rem;
+}
+
+.mobile-search {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.mobile-search input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 25px;
+  font-family: "Poppins", sans-serif;
+}
+
+.mobile-search i {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary-color);
+  font-size: 1.25rem;
+}
+
+.mobile-categories,
+.mobile-sort {
+  margin-bottom: 2rem;
+}
+
+.mobile-categories h4,
+.mobile-sort h4 {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+#mobile-filtros-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+#mobile-filtros-botones .btn-filtro {
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+}
+
+.mobile-sort select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 25px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.mobile-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-sidebar-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
 @keyframes pulse {
 
   0%,
@@ -1181,6 +1325,109 @@ body {
   .cart-sidebar {
     width: 100%;
     right: -100%;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Show hamburger button on mobile */
+  .btn-hamburger {
+    display: block;
+    margin-right: auto;
+  }
+
+  /* Hide navbar content on mobile */
+  .navbar-content {
+    display: none !important;
+  }
+
+  /* Adjust navbar for mobile */
+  .navbar .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  .cart-icon-btn {
+    margin-left: auto;
+  }
+
+  /* Carousel adjustments for mobile */
+  .carousel-container {
+    height: 300px;
+  }
+
+  .carousel-slide img {
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .carousel-caption {
+    bottom: 20px;
+    padding: 0 1rem;
+    max-width: 90%;
+  }
+
+  .carousel-caption h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+  }
+
+  .carousel-caption p {
+    display: none;
+  }
+
+  /* Smaller navigation buttons */
+  .carousel-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1.25rem;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  /* Smaller dots */
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Hide desktop filters and sort */
+  .filtros-container,
+  .sort-container {
+    display: none;
+  }
+
+  /* Sidebar Cart Mobile */
+  .cart-sidebar {
+    width: 100%;
+    right: -100%;
+  }
+
+  /* Center notifications on mobile */
+  .toastify {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .toastify.toastify-right {
+    left: 50% !important;
+    right: auto !important;
   }
 }
 

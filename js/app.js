@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     }
     setupCartListeners();
     setupSortListener();
+    setupMobileSidebar();
     initCarousel();
 });
 
@@ -86,6 +87,42 @@ const pintarFiltros = (categorias) => {
     });
 
     filtrosBotones.appendChild(fragment);
+
+    // Also populate mobile sidebar filters
+    const mobileFiltrosBotones = document.getElementById('mobile-filtros-botones');
+    if (mobileFiltrosBotones) {
+        const mobileFragment = new DocumentFragment();
+        const mobileBtnTodos = document.createElement('button');
+        mobileBtnTodos.className = 'btn-filtro active';
+        mobileBtnTodos.textContent = 'Todos';
+        mobileBtnTodos.addEventListener('click', () => {
+            categoriaActual = 'Todos';
+            document.querySelectorAll('.btn-filtro').forEach(btn => btn.classList.remove('active'));
+            mobileBtnTodos.classList.add('active');
+            btnTodos.classList.add('active');
+            aplicarFiltros();
+            closeMobileSidebar();
+        });
+        mobileFragment.appendChild(mobileBtnTodos);
+
+        categorias.forEach(categoria => {
+            const mobileBtn = document.createElement('button');
+            mobileBtn.className = 'btn-filtro';
+            mobileBtn.textContent = categoria;
+            mobileBtn.addEventListener('click', () => {
+                categoriaActual = categoria;
+                document.querySelectorAll('.btn-filtro').forEach(btn => btn.classList.remove('active'));
+                mobileBtn.classList.add('active');
+                const desktopBtn = Array.from(filtrosBotones.querySelectorAll('.btn-filtro')).find(b => b.textContent === categoria);
+                if (desktopBtn) desktopBtn.classList.add('active');
+                aplicarFiltros();
+                closeMobileSidebar();
+            });
+            mobileFragment.appendChild(mobileBtn);
+        });
+
+        mobileFiltrosBotones.appendChild(mobileFragment);
+    }
 };
 
 searchInput.addEventListener('input', (e) => {
@@ -617,4 +654,59 @@ const mostrarQuickView = (producto) => {
     };
     const modal = new bootstrap.Modal(document.getElementById('modal-quick-view'));
     modal.show();
+};
+
+// ===== MOBILE SIDEBAR FUNCTIONALITY =====
+const setupMobileSidebar = () => {
+    const btnHamburger = document.getElementById('btn-hamburger');
+    const btnCloseSidebar = document.getElementById('btn-close-sidebar');
+    const mobileSidebar = document.getElementById('mobile-sidebar');
+    const mobileOverlay = document.getElementById('mobile-sidebar-overlay');
+    const mobileSearchInput = document.getElementById('mobile-search-input');
+    const mobileSortSelect = document.getElementById('mobile-sort-select');
+
+    if (!btnHamburger || !mobileSidebar) return;
+
+    // Open sidebar
+    btnHamburger.addEventListener('click', () => {
+        mobileSidebar.classList.add('active');
+        mobileOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Close sidebar
+    btnCloseSidebar.addEventListener('click', closeMobileSidebar);
+    mobileOverlay.addEventListener('click', closeMobileSidebar);
+
+    // Mobile search sync with desktop
+    if (mobileSearchInput) {
+        mobileSearchInput.addEventListener('input', (e) => {
+            const desktopSearchInput = document.getElementById('search-input');
+            if (desktopSearchInput) {
+                desktopSearchInput.value = e.target.value;
+                desktopSearchInput.dispatchEvent(new Event('input'));
+            }
+        });
+    }
+
+    // Mobile sort sync with desktop
+    if (mobileSortSelect) {
+        mobileSortSelect.addEventListener('change', (e) => {
+            const desktopSortSelect = document.getElementById('sort-select');
+            if (desktopSortSelect) {
+                desktopSortSelect.value = e.target.value;
+                sortProducts(e.target.value);
+            }
+            closeMobileSidebar();
+        });
+    }
+};
+
+const closeMobileSidebar = () => {
+    const mobileSidebar = document.getElementById('mobile-sidebar');
+    const mobileOverlay = document.getElementById('mobile-sidebar-overlay');
+
+    if (mobileSidebar) mobileSidebar.classList.remove('active');
+    if (mobileOverlay) mobileOverlay.classList.remove('active');
+    document.body.style.overflow = '';
 };
