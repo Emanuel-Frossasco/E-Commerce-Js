@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         actualizarContadorCarrito();
     }
     setupCartListeners();
+    initCarousel();
 });
 
 const fetchData = async () => {
@@ -329,4 +330,82 @@ const mostrarNotificacion = (mensaje, tipo = "success") => {
         position: "right",
         style: { background: colores[tipo] || colores.success },
     }).showToast();
+};
+
+// ===== CAROUSEL FUNCTIONALITY =====
+let currentSlide = 0;
+let carouselInterval;
+
+const initCarousel = () => {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const prevBtn = document.querySelector('#carousel-prev');
+    const nextBtn = document.querySelector('#carousel-next');
+
+    if (!slides.length) return;
+
+    // Auto slide every 8 seconds
+    const startAutoSlide = () => {
+        carouselInterval = setInterval(() => {
+            nextSlide();
+        }, 8000);
+    };
+
+    const stopAutoSlide = () => {
+        clearInterval(carouselInterval);
+    };
+
+    const showSlide = (index) => {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        if (index >= slides.length) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = slides.length - 1;
+        } else {
+            currentSlide = index;
+        }
+
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    };
+
+    const nextSlide = () => {
+        showSlide(currentSlide + 1);
+    };
+
+    const prevSlide = () => {
+        showSlide(currentSlide - 1);
+    };
+
+    // Event listeners for navigation buttons
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopAutoSlide();
+        startAutoSlide();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopAutoSlide();
+        startAutoSlide();
+    });
+
+    // Event listeners for dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            stopAutoSlide();
+            startAutoSlide();
+        });
+    });
+
+    // Pause on hover
+    const carouselContainer = document.querySelector('.carousel-container');
+    carouselContainer.addEventListener('mouseenter', stopAutoSlide);
+    carouselContainer.addEventListener('mouseleave', startAutoSlide);
+
+    // Start auto slide
+    startAutoSlide();
 };

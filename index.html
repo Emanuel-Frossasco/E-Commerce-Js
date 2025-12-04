@@ -37,9 +37,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="d-flex ms-auto align-items-center">
-          <input class="form-control search-input" type="search" id="search-input" placeholder="Buscar manga..."
-            aria-label="Search">
-          <i class='bx bx-search search-icon'></i>
+          <div class="search-container">
+            <input class="form-control search-input" type="search" id="search-input" placeholder="Buscar manga..."
+              aria-label="Search">
+            <i class='bx bx-search search-icon'></i>
+          </div>
           <!-- Cart Icon -->
           <button class="cart-icon-btn" id="open-cart" aria-label="Abrir carrito">
             <i class='bx bx-cart'></i>
@@ -49,6 +51,73 @@
       </div>
     </div>
   </nav>
+
+  <div class="carousel-container">
+    <div class="carousel-wrapper">
+      <div class="carousel-slides" id="carousel-slides">
+        <div class="carousel-slide active">
+          <img src="./assets/carousel/chainsaw-man-banner-convertido-a-1920x500.jpeg" alt="Promoción 1">
+          <div class="carousel-caption">
+            <h2>Chainsaw Man</h2>
+            <p>¡La sensación del momento! Sigue las épicas aventuras de Denji, un cazador de demonios con poderes de
+              motosierra. Acción desenfrenada y giros inesperados en cada capítulo.</p>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <img src="./assets/carousel/haikyu-banner.png" alt="Promoción 2">
+          <div class="carousel-caption">
+            <h2>Haikyu!!</h2>
+            <p>¡Vive la pasión del voleibol! Acompaña a Hinata en su camino hacia la cima. Una historia inspiradora
+              sobre trabajo en equipo, superación y amistad.</p>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <img src="./assets/carousel/jujutsu-kaisen-banner-convertido-a-1920x500.jpeg" alt="Promoción 3">
+          <div class="carousel-caption">
+            <h2>Jujutsu Kaisen</h2>
+            <p>¡El fenómeno del shonen moderno! Maldiciones, hechicería y batallas épicas. Descubre por qué millones de
+              fans están obsesionados con esta serie.</p>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <img src="./assets/carousel/classrooom-of-the-elite-banner.jpg" alt="Promoción 4">
+          <div class="carousel-caption">
+            <h2>Classroom of the Elite</h2>
+            <p>Intrigas, estrategia y misterio en la academia más competitiva. Ayanokoji y sus compañeros luchan por la
+              supremacía en un sistema educativo despiadado.</p>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <img src="./assets/carousel/tokyo-revenge-banner.png" alt="Promoción 5">
+          <div class="carousel-caption">
+            <h2>Tokyo Revengers</h2>
+            <p>¡Viaja en el tiempo para cambiar el destino! Takemichi regresa al pasado para salvar a sus amigos.
+              Pandillas, lealtad y segundas oportunidades en esta emocionante historia.</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-btn carousel-btn-prev" id="carousel-prev" aria-label="Anterior">
+        <i class='bx bx-chevron-left'></i>
+      </button>
+      <button class="carousel-btn carousel-btn-next" id="carousel-next" aria-label="Siguiente">
+        <i class='bx bx-chevron-right'></i>
+      </button>
+
+      <div class="carousel-dots" id="carousel-dots">
+        <span class="carousel-dot active" data-slide="0"></span>
+        <span class="carousel-dot" data-slide="1"></span>
+        <span class="carousel-dot" data-slide="2"></span>
+        <span class="carousel-dot" data-slide="3"></span>
+        <span class="carousel-dot" data-slide="4"></span>
+      </div>
+    </div>
+  </div>
+
   <div class="container">
     <!-- Filtros de categoría -->
     <div class="filtros-container my-4" id="filtros-container">
@@ -204,19 +273,80 @@
   </div>
 
   <footer class="footer">
-    <div class="grupo-1">
-      <div class="box">
-        <h4>Desarrollado por Frossasco Emanuel</h4>
-      </div>
-      <div class="box">
-        <small>&copy; 2022 - Todos los Derechos Reservados</small>
-      </div>
-      <div class="box">
-        <div class="red.social">
-          <img class="redes" src="./assets/icons/facebook1.png" alt="Facebook" width="30px">
-          <img class="redes" src="./assets/icons/instagram.png" alt="Instagram" width="30px">
-          <img class="redes" src="./assets/icons/twitter.png" alt="Twitter" width="30px">
+    <div class="footer-content">
+      <div class="footer-grid">
+        <!-- About Section -->
+        <div class="footer-section">
+          <h3>Manga Store</h3>
+          <p>Tu tienda online de confianza para los mejores mangas. Encuentra las últimas novedades y clásicos
+            imprescindibles.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">
+              <i class='bx bxl-facebook'></i>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <i class='bx bxl-instagram'></i>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <i class='bx bxl-twitter'></i>
+            </a>
+            <a href="#" aria-label="Discord">
+              <i class='bx bxl-discord'></i>
+            </a>
+          </div>
         </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section">
+          <h3>Enlaces Rápidos</h3>
+          <ul class="footer-links">
+            <li><a href="#"><i class='bx bx-chevron-right'></i>Inicio</a></li>
+            <li><a href="#"><i class='bx bx-chevron-right'></i>Catálogo</a></li>
+            <li><a href="#"><i class='bx bx-chevron-right'></i>Novedades</a></li>
+            <li><a href="#"><i class='bx bx-chevron-right'></i>Ofertas</a></li>
+            <li><a href="#"><i class='bx bx-chevron-right'></i>Sobre Nosotros</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Service -->
+        <div class="footer-section">
+          <h3>Atención al Cliente</h3>
+          <ul class="footer-links">
+            <li><a href="#"><i class='bx bx-chevron-right'></i>Preguntas Frecuentes</a></li>
+            <li><a href="#"><i class='bx bx-chevron-right'></i>Envíos y Devoluciones</a></li>
+            <li><a href="#"><i class='bx bx-chevron-right'></i>Términos y Condiciones</a></li>
+            <li><a href="#"><i class='bx bx-chevron-right'></i>Política de Privacidad</a></li>
+            <li><a href="#"><i class='bx bx-chevron-right'></i>Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section">
+          <h3>Contacto</h3>
+          <ul class="contact-info">
+            <li>
+              <i class='bx bx-map'></i>
+              <span>Buenos Aires, Argentina</span>
+            </li>
+            <li>
+              <i class='bx bx-envelope'></i>
+              <span>info@mangastore.com</span>
+            </li>
+            <li>
+              <i class='bx bx-phone'></i>
+              <span>+54 11 1234-5678</span>
+            </li>
+            <li>
+              <i class='bx bx-time'></i>
+              <span>Lun - Vie: 9:00 - 18:00</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2023 Manga Store. Desarrollado por <a href="#">Emanuel Frossasco</a>. Todos los derechos reservados.
+        </p>
       </div>
     </div>
   </footer>
