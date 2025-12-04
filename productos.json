@@ -5,7 +5,9 @@
         "title": "TOKYO REVENGERS #02",
         "thumbnailUrl": "./assets/img/tokyo-revengers-2.jpg",
         "isNew": true,
-        "description": "Takemichi viaja al pasado para salvar a sus amigos de un destino trágico. Acción, drama y pandillas en esta emocionante historia."
+        "description": "Takemichi viaja al pasado para salvar a sus amigos de un destino trágico. Acción, drama y pandillas en esta emocionante historia.",
+        "popularity": 95,
+        "releaseDate": "2024-12-01"
     },
     {
         "precio": 990,
@@ -15,14 +17,18 @@
         "isNew": true,
         "discount": 20,
         "originalPrice": 1238,
-        "description": "Denji es un joven cazador de demonios que se fusiona con su perro-motosierra Pochita. ¡El inicio de una saga épica!"
+        "description": "Denji es un joven cazador de demonios que se fusiona con su perro-motosierra Pochita. ¡El inicio de una saga épica!",
+        "popularity": 98,
+        "releaseDate": "2024-11-28"
     },
     {
         "precio": 990,
         "id": 3,
         "title": "CHAINSAW MAN #02",
         "thumbnailUrl": "./assets/img/chainsaw-man-2.jpg",
-        "description": "Denji se une a los cazadores de demonios oficiales. Más acción y revelaciones impactantes."
+        "description": "Denji se une a los cazadores de demonios oficiales. Más acción y revelaciones impactantes.",
+        "popularity": 92,
+        "releaseDate": "2024-10-15"
     },
     {
         "precio": 990,
@@ -31,14 +37,18 @@
         "thumbnailUrl": "./assets/img/chainsaw-man-4.jpg",
         "discount": 15,
         "originalPrice": 1165,
-        "description": "La batalla contra el demonio de la eternidad. Tensión y horror en cada página."
+        "description": "La batalla contra el demonio de la eternidad. Tensión y horror en cada página.",
+        "popularity": 88,
+        "releaseDate": "2024-09-20"
     },
     {
         "precio": 990,
         "id": 5,
         "title": "CHAINSAW MAN #05",
         "thumbnailUrl": "./assets/img/chainsaw-man-5.jpg",
-        "description": "Nuevos enemigos aparecen. Denji enfrenta sus desafíos más difíciles hasta ahora."
+        "description": "Nuevos enemigos aparecen. Denji enfrenta sus desafíos más difíciles hasta ahora.",
+        "popularity": 85,
+        "releaseDate": "2024-08-10"
     },
     {
         "precio": 990,
@@ -47,14 +57,18 @@
         "thumbnailUrl": "./assets/img/haikyu-01.jpg",
         "discount": 25,
         "originalPrice": 1320,
-        "description": "Hinata Shoyo sueña con ser un gran jugador de voleibol a pesar de su baja estatura. ¡El comienzo de una aventura deportiva!"
+        "description": "Hinata Shoyo sueña con ser un gran jugador de voleibol a pesar de su baja estatura. ¡El comienzo de una aventura deportiva!",
+        "popularity": 90,
+        "releaseDate": "2024-07-05"
     },
     {
         "precio": 990,
         "id": 7,
         "title": "TOKYO REVENGERS #01",
         "thumbnailUrl": "./assets/img/tokyo-revengers-1.jpg",
-        "description": "El primer volumen de la saga de viajes en el tiempo. Takemichi descubre su poder."
+        "description": "El primer volumen de la saga de viajes en el tiempo. Takemichi descubre su poder.",
+        "popularity": 93,
+        "releaseDate": "2024-11-15"
     },
     {
         "precio": 990,
@@ -63,21 +77,27 @@
         "thumbnailUrl": "./assets/img/chainsaw-man-7.jpg",
         "discount": 30,
         "originalPrice": 1414,
-        "description": "¡OFERTA ESPECIAL! Continúa la saga con este volumen a precio increíble."
+        "description": "¡OFERTA ESPECIAL! Continúa la saga con este volumen a precio increíble.",
+        "popularity": 80,
+        "releaseDate": "2024-06-12"
     },
     {
         "precio": 990,
         "id": 9,
         "title": "CHAINSAW MAN #06",
         "thumbnailUrl": "./assets/img/chainsaw-man-6.jpg",
-        "description": "El arco de Katana Man. Acción intensa y giros inesperados."
+        "description": "El arco de Katana Man. Acción intensa y giros inesperados.",
+        "popularity": 82,
+        "releaseDate": "2024-07-18"
     },
     {
         "precio": 990,
         "id": 10,
         "title": "CHAINSAW MAN #08",
         "thumbnailUrl": "./assets/img/chainsaw-man-8.jpg",
-        "description": "La historia se intensifica con nuevos demonios y aliados inesperados."
+        "description": "La historia se intensifica con nuevos demonios y aliados inesperados.",
+        "popularity": 78,
+        "releaseDate": "2024-05-22"
     },
     {
         "precio": 990,
@@ -86,14 +106,18 @@
         "thumbnailUrl": "./assets/img/haikyu-02.jpg",
         "discount": 10,
         "originalPrice": 1100,
-        "description": "Hinata y Kageyama forman un dúo imparable. ¡El trabajo en equipo es la clave!"
+        "description": "Hinata y Kageyama forman un dúo imparable. ¡El trabajo en equipo es la clave!",
+        "popularity": 87,
+        "releaseDate": "2024-06-28"
     },
     {
         "precio": 990,
         "id": 12,
         "title": "CHAINSAW MAN #09",
         "thumbnailUrl": "./assets/img/chainsaw-man-9.jpg",
-        "description": "Revelaciones impactantes sobre el pasado de Denji y su conexión con Makima."
+        "description": "Revelaciones impactantes sobre el pasado de Denji y su conexión con Makima.",
+        "popularity": 75,
+        "releaseDate": "2024-04-15"
     },
     {
         "precio": 1100,
@@ -102,28 +126,36 @@
         "thumbnailUrl": "./assets/img/jujutsu-kaisen-00.webp",
         "discount": 15,
         "originalPrice": 1294,
-        "description": "La precuela de Jujutsu Kaisen. Descubre el pasado de Yuta Okkotsu y su maldición."
+        "description": "La precuela de Jujutsu Kaisen. Descubre el pasado de Yuta Okkotsu y su maldición.",
+        "popularity": 96,
+        "releaseDate": "2024-10-30"
     },
     {
         "precio": 990,
         "id": 14,
         "title": "HAIKYU!! #03",
         "thumbnailUrl": "./assets/img/haikyu-03.jpg",
-        "description": "El equipo de Karasuno se prepara para su primer torneo oficial."
+        "description": "El equipo de Karasuno se prepara para su primer torneo oficial.",
+        "popularity": 84,
+        "releaseDate": "2024-05-10"
     },
     {
         "precio": 990,
         "id": 15,
         "title": "CHAINSAW MAN #10",
         "thumbnailUrl": "./assets/img/chainsaw-man-10.jpg",
-        "description": "El clímax del primer arco. Batallas épicas y sacrificios heroicos."
+        "description": "El clímax del primer arco. Batallas épicas y sacrificios heroicos.",
+        "popularity": 72,
+        "releaseDate": "2024-03-20"
     },
     {
         "precio": 990,
         "id": 16,
         "title": "JUJUTSU KAISEN #03",
         "thumbnailUrl": "./assets/img/jujutsu-kaisen-03.jpg",
-        "description": "Yuji enfrenta maldiciones cada vez más poderosas mientras aprende a controlar su poder."
+        "description": "Yuji enfrenta maldiciones cada vez más poderosas mientras aprende a controlar su poder.",
+        "popularity": 91,
+        "releaseDate": "2024-09-05"
     },
     {
         "precio": 1100,
@@ -132,21 +164,27 @@
         "thumbnailUrl": "./assets/img/jujutsu-kaisen-02.webp",
         "discount": 20,
         "originalPrice": 1375,
-        "description": "Yuji Itadori continúa su entrenamiento como hechicero. Nuevos aliados y enemigos aparecen."
+        "description": "Yuji Itadori continúa su entrenamiento como hechicero. Nuevos aliados y enemigos aparecen.",
+        "popularity": 94,
+        "releaseDate": "2024-10-08"
     },
     {
         "precio": 990,
         "id": 18,
         "title": "HAIKYU!! #05",
         "thumbnailUrl": "./assets/img/haikyu-05.jpg",
-        "description": "El partido contra Aoba Johsai. Tensión y emoción en cada jugada."
+        "description": "El partido contra Aoba Johsai. Tensión y emoción en cada jugada.",
+        "popularity": 81,
+        "releaseDate": "2024-04-02"
     },
     {
         "precio": 1100,
         "id": 19,
         "title": "JUJUTSU KAISEN #01",
         "thumbnailUrl": "./assets/img/jujutsu-kaisen-01.jpg",
-        "description": "El inicio de la saga de hechicería. Yuji Itadori se convierte en el recipiente de Sukuna."
+        "description": "El inicio de la saga de hechicería. Yuji Itadori se convierte en el recipiente de Sukuna.",
+        "popularity": 100,
+        "releaseDate": "2024-11-01"
     },
     {
         "precio": 1500,
@@ -155,6 +193,8 @@
         "thumbnailUrl": "./assets/img/clasrroom-of-the-elite-1.webp",
         "discount": 10,
         "originalPrice": 1667,
-        "description": "En una academia de élite, Ayanokoji Kiyotaka oculta su verdadero potencial. Estrategia, intriga y competencia."
+        "description": "En una academia de élite, Ayanokoji Kiyotaka oculta su verdadero potencial. Estrategia, intriga y competencia.",
+        "popularity": 89,
+        "releaseDate": "2024-08-25"
     }
 ]

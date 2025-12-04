@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         actualizarContadorCarrito();
     }
     setupCartListeners();
+    setupSortListener();
     initCarousel();
 });
 
@@ -379,7 +380,47 @@ const mostrarNotificacion = (mensaje, tipo = "success") => {
     }).showToast();
 };
 
-// ===== CAROUSEL FUNCTIONALITY =====
+const setupSortListener = () => {
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+            const sortValue = e.target.value;
+            sortProducts(sortValue);
+        });
+    }
+};
+
+const sortProducts = (sortType) => {
+    let sortedData = [...productosFiltrados];
+
+    switch (sortType) {
+        case 'price-asc':
+            sortedData.sort((a, b) => a.precio - b.precio);
+            break;
+        case 'price-desc':
+            sortedData.sort((a, b) => b.precio - a.precio);
+            break;
+        case 'popularity':
+            sortedData.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+            break;
+        case 'release-date':
+            sortedData.sort((a, b) => {
+                const dateA = new Date(a.releaseDate || '2000-01-01');
+                const dateB = new Date(b.releaseDate || '2000-01-01');
+                return dateB - dateA;
+            });
+            break;
+        case 'default':
+        default:
+            sortedData = [...productosFiltrados];
+            break;
+    }
+
+    listaProductos.innerHTML = '';
+    pintarProductos(sortedData);
+    eventoBotones(sortedData);
+};
+
 let currentSlide = 0;
 let carouselInterval;
 
@@ -448,41 +489,30 @@ const initCarousel = () => {
         });
     });
 
-    // Pause on hover
     const carouselContainer = document.querySelector('.carousel-container');
     carouselContainer.addEventListener('mouseenter', stopAutoSlide);
     carouselContainer.addEventListener('mouseleave', startAutoSlide);
-
-    // Start auto slide
     startAutoSlide();
 };
 
-// ===== QUICK VIEW FUNCTIONALITY =====
 const mostrarQuickView = (producto) => {
-    // Populate modal with product data
     document.getElementById('quick-view-img').src = producto.thumbnailUrl;
     document.getElementById('quick-view-title').textContent = producto.title;
     document.getElementById('quick-view-description').textContent = producto.description || 'Descripción no disponible';
-
-    // Badges
     const badgesContainer = document.getElementById('quick-view-badges');
     badgesContainer.innerHTML = '';
-
     if (producto.isNew) {
         const badgeNew = document.createElement('span');
         badgeNew.className = 'badge-new';
         badgeNew.textContent = 'NUEVO';
         badgesContainer.appendChild(badgeNew);
     }
-
     if (producto.discount) {
         const badgeDiscount = document.createElement('span');
         badgeDiscount.className = 'badge-discount';
         badgeDiscount.textContent = `-${producto.discount}%`;
         badgesContainer.appendChild(badgeDiscount);
     }
-
-    // Prices
     const originalPriceEl = document.getElementById('quick-view-original-price');
     const originalPriceValue = document.getElementById('quick-view-original-price-value');
     const currentPriceValue = document.getElementById('quick-view-current-price-value');
@@ -493,10 +523,7 @@ const mostrarQuickView = (producto) => {
     } else {
         originalPriceEl.style.display = 'none';
     }
-
     currentPriceValue.textContent = producto.precio;
-
-    // Add to cart button
     const btnAddToCart = document.getElementById('btn-add-to-cart-quick');
     btnAddToCart.onclick = () => {
         const productoCarrito = {
@@ -507,7 +534,6 @@ const mostrarQuickView = (producto) => {
             cantidad: 1,
             precioTotal: producto.precio,
         };
-
         const index = carrito.findIndex((item) => item.id === productoCarrito.id);
         if (index === -1) {
             carrito.push(productoCarrito);
@@ -515,21 +541,14 @@ const mostrarQuickView = (producto) => {
             carrito[index].cantidad++;
             carrito[index].precioTotal = carrito[index].cantidad * carrito[index].precio;
         }
-
         renderCartSidebar();
         guardarCarrito();
         actualizarContadorCarrito();
         mostrarNotificacion(`${producto.title} agregado al carrito`, "success");
-
-        // Close quick view modal
         const modal = bootstrap.Modal.getInstance(document.getElementById('modal-quick-view'));
         modal.hide();
-
-        // Open cart sidebar
         openCartSidebar();
     };
-
-    // Show modal
     const modal = new bootstrap.Modal(document.getElementById('modal-quick-view'));
     modal.show();
 };
