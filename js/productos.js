@@ -180,8 +180,139 @@ const actualizarBadgeCarrito = () => {
 document.addEventListener('DOMContentLoaded', () => {
     cargarProductos();
     actualizarBadgeCarrito();
+
+    // Read search parameter from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get('search');
+
     const searchInput = document.getElementById('search-input');
     const mobileSearchInput = document.getElementById('mobile-search-input');
+
+    // If there's a search parameter, populate the input and apply filter
+    if (searchParam && searchInput) {
+        searchInput.value = searchParam;
+        if (mobileSearchInput) {
+            mobileSearchInput.value = searchParam;
+        }
+        // Wait for products to load before applying filter
+        setTimeout(() => {
+            aplicarFiltros();
+        }, 100);
+    }
+
+    // Autocomplete variables
+    let currentSuggestionIndex = -1;
+    let debounceTimer;
+    const suggestionsContainer = document.getElementById('search-suggestions');
+
+    const showSuggestions = (suggestions) => {
+        if (!suggestionsContainer) return;
+
+        if (suggestions.length === 0) {
+            suggestionsContainer.innerHTML = '<div class="search-no-results">No se encontraron resultados</div>';
+            suggestionsContainer.classList.add('active');
+            return;
+        }
+
+        const html = suggestions.map((product, index) => `
+            <div class="search-suggestion-item" data-index="${index}" data-id="${product.id}">
+                <img src="${product.thumbnailUrl}" alt="${product.title}" class="search-suggestion-img">
+                <div class="search-suggestion-info">
+                    <p class="search-suggestion-title">${product.title}</p>
+                    <p class="search-suggestion-price">$${product.precio}</p>
+                </div>
+            </div>
+        `).join('');
+
+        suggestionsContainer.innerHTML = html;
+        suggestionsContainer.classList.add('active');
+        currentSuggestionIndex = -1;
+
+        // Add click listeners
+        document.querySelectorAll('.search-suggestion-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const productId = item.dataset.id;
+                window.location.href = `producto.html?id=${productId}`;
+            });
+        });
+    };
+
+    const hideSuggestions = () => {
+        if (suggestionsContainer) {
+            suggestionsContainer.classList.remove('active');
+        }
+        currentSuggestionIndex = -1;
+    };
+
+    const searchProductsAutocomplete = (term) => {
+        if (!term || term.length < 2) {
+            hideSuggestions();
+            return;
+        }
+
+        const results = todosLosProductos.filter(product =>
+            product.title.toLowerCase().includes(term.toLowerCase())
+        ).slice(0, 8);
+
+        showSuggestions(results);
+    };
+
+    const highlightSuggestion = (index) => {
+        const items = document.querySelectorAll('.search-suggestion-item');
+        items.forEach(item => item.classList.remove('highlighted'));
+
+        if (index >= 0 && index < items.length) {
+            items[index].classList.add('highlighted');
+            items[index].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+    };
+
+    searchInput.addEventListener('input', (e) => {
+        aplicarFiltros();
+
+        // Autocomplete
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            searchProductsAutocomplete(e.target.value.trim());
+        }, 300);
+    });
+
+    // Keyboard navigation for autocomplete
+    searchInput.addEventListener('keydown', (e) => {
+        const items = document.querySelectorAll('.search-suggestion-item');
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            currentSuggestionIndex = Math.min(currentSuggestionIndex + 1, items.length - 1);
+            highlightSuggestion(currentSuggestionIndex);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            currentSuggestionIndex = Math.max(currentSuggestionIndex - 1, -1);
+            highlightSuggestion(currentSuggestionIndex);
+        } else if (e.key === 'Enter' && currentSuggestionIndex >= 0 && items[currentSuggestionIndex]) {
+            e.preventDefault();
+            const productId = items[currentSuggestionIndex].dataset.id;
+            window.location.href = `producto.html?id=${productId}`;
+        } else if (e.key === 'Escape') {
+            hideSuggestions();
+            searchInput.blur();
+        }
+    });
+
+    // Focus event for autocomplete
+    searchInput.addEventListener('focus', () => {
+        if (searchInput.value.trim().length >= 2) {
+            searchProductsAutocomplete(searchInput.value.trim());
+        }
+    });
+
+    // Close suggestions when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-container')) {
+            hideSuggestions();
+        }
+    });
+
     searchInput.addEventListener('input', aplicarFiltros);
     mobileSearchInput.addEventListener('input', (e) => {
         searchInput.value = e.target.value;
