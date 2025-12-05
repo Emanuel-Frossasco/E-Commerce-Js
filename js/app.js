@@ -3,13 +3,11 @@ let productosFiltrados = [];
 let carrito = [];
 let categoriaActual = 'Todos';
 let busquedaActual = '';
-
 const listaProductos = document.querySelector("#lista-productos");
 const cartBadge = document.querySelector("#cart-badge");
 const searchInput = document.querySelector("#search-input");
 const filtrosBotones = document.querySelector("#filtros-botones");
 const noResults = document.querySelector("#no-results");
-
 const cartSidebar = document.querySelector("#cart-sidebar");
 const cartOverlay = document.querySelector("#cart-overlay");
 const openCartBtn = document.querySelector("#open-cart");
@@ -31,8 +29,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
     setupSortListener();
     setupMobileSidebar();
     initCarousel();
-
-    // Initialize AOS (Animate On Scroll)
     if (typeof AOS !== 'undefined') {
         AOS.init({
             duration: 800,
@@ -48,16 +44,11 @@ const fetchData = async () => {
         const res = await fetch("productos.json");
         const data = await res.json();
         todosLosProductos = data;
-
-        // HOMEPAGE: Filter to show only new releases and special offers
         const novedades = data.filter(p => p.esNovedad === true);
         const ofertas = data.filter(p => p.enOferta === true);
-
-        // Combine and remove duplicates (products that are both new and on sale)
         const productosDestacados = [...novedades, ...ofertas].filter((producto, index, self) =>
             index === self.findIndex(p => p.id === producto.id)
         );
-
         productosFiltrados = productosDestacados;
         const categorias = extraerCategorias(data);
         pintarFiltros(categorias);
@@ -82,11 +73,9 @@ const extraerCategorias = (data) => {
 };
 
 const pintarFiltros = (categorias) => {
-    // Skip filter generation if the container doesn't exist (e.g., on homepage)
     if (!filtrosBotones) {
         return;
     }
-
     const fragment = document.createDocumentFragment();
     const btnTodos = document.createElement('button');
     btnTodos.className = 'btn-filtro active';
@@ -110,10 +99,7 @@ const pintarFiltros = (categorias) => {
         });
         fragment.appendChild(btn);
     });
-
     filtrosBotones.appendChild(fragment);
-
-    // Also populate mobile sidebar filters
     const mobileFiltrosBotones = document.getElementById('mobile-filtros-botones');
     if (mobileFiltrosBotones) {
         const mobileFragment = new DocumentFragment();
@@ -129,7 +115,6 @@ const pintarFiltros = (categorias) => {
             closeMobileSidebar();
         });
         mobileFragment.appendChild(mobileBtnTodos);
-
         categorias.forEach(categoria => {
             const mobileBtn = document.createElement('button');
             mobileBtn.className = 'btn-filtro';
@@ -145,7 +130,6 @@ const pintarFiltros = (categorias) => {
             });
             mobileFragment.appendChild(mobileBtn);
         });
-
         mobileFiltrosBotones.appendChild(mobileFragment);
     }
 };
@@ -192,59 +176,41 @@ const pintarProductos = (data) => {
     const fragment = new DocumentFragment();
     data.forEach((producto, index) => {
         const clone = template.content.cloneNode(true);
-
         // Add AOS animation to the product card
         const cardCol = clone.querySelector('.col-12');
         if (cardCol) {
             cardCol.setAttribute('data-aos', 'fade-up');
             cardCol.setAttribute('data-aos-duration', '600');
-            cardCol.setAttribute('data-aos-delay', `${index * 50}`); // Staggered animation
+            cardCol.setAttribute('data-aos-delay', `${index * 50}`);
         }
-
-        // Image
         clone.querySelector("img").setAttribute("src", producto.thumbnailUrl);
-
-        // Title
         clone.querySelector("h5").textContent = producto.title;
-
-        // Badges
         const badgeNew = clone.querySelector(".badge-new");
         const badgeDiscount = clone.querySelector(".badge-discount");
 
         if (producto.isNew) {
             badgeNew.style.display = "block";
         }
-
         if (producto.discount) {
             badgeDiscount.textContent = `-${producto.discount}%`;
             badgeDiscount.style.display = "block";
         }
-
-        // Prices
         const originalPriceEl = clone.querySelector(".original-price");
         const originalPriceValue = clone.querySelector(".original-price-value");
         const currentPriceValue = clone.querySelector(".current-price-value");
-
         if (producto.discount && producto.originalPrice) {
             originalPriceEl.style.display = "block";
             originalPriceValue.textContent = producto.originalPrice;
         }
-
         currentPriceValue.textContent = producto.precio;
-
-        // Buttons
         const btnAddCart = clone.querySelector(".btn-add-cart");
         const btnQuickView = clone.querySelector(".btn-quick-view");
-
         btnAddCart.setAttribute("data-id", producto.id);
         btnQuickView.setAttribute("data-id", producto.id);
 
         fragment.appendChild(clone);
     });
-
     listaProductos.appendChild(fragment);
-
-    // Refresh AOS to detect new elements
     if (typeof AOS !== 'undefined') {
         AOS.refresh();
     }
@@ -305,7 +271,6 @@ const eventoBotones = (data) => {
                 }
             });
         }
-
         if (title) {
             title.style.cursor = "pointer";
             title.addEventListener("click", () => {
@@ -333,7 +298,6 @@ const setupCartListeners = () => {
     });
     btnClearCart.addEventListener('click', () => {
         if (carrito.length === 0) return;
-
         if (confirm('¿Estás seguro de vaciar el carrito?')) {
             carrito = [];
             renderCartSidebar();
@@ -376,7 +340,6 @@ const renderCartSidebar = () => {
         clone.querySelector('.btn-cart-increase').setAttribute('data-id', item.id);
         clone.querySelector('.btn-cart-decrease').setAttribute('data-id', item.id);
         clone.querySelector('.btn-cart-remove').setAttribute('data-id', item.id);
-
         fragment.appendChild(clone);
     });
     cartItemsContainer.appendChild(fragment);
@@ -439,7 +402,6 @@ const guardarCarrito = () => {
 const actualizarContadorCarrito = () => {
     const totalItems = carrito.reduce((total, item) => total + item.cantidad, 0);
     cartBadge.textContent = totalItems;
-
     if (totalItems > 0) {
         cartBadge.classList.add('pulse');
         setTimeout(() => cartBadge.classList.remove('pulse'), 300);
@@ -447,7 +409,6 @@ const actualizarContadorCarrito = () => {
 };
 
 const mostrarModalCompra = () => {
-    // Redirigir a página de checkout
     window.location.href = 'checkout.html';
 };
 
@@ -457,13 +418,11 @@ const mostrarNotificacion = (mensaje, tipo = "success", productoImg = null) => {
         error: "linear-gradient(135deg, #ff4757 0%, #ff6348 100%)",
         info: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
     };
-
     const iconos = {
         success: "✓",
         error: "✕",
         info: "ℹ"
     };
-
     let notificationHTML = `
         <div style="display: flex; align-items: center; gap: 1rem;">
             ${productoImg ? `<img src="${productoImg}" style="width: 50px; height: 70px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">` : ''}
@@ -473,7 +432,6 @@ const mostrarNotificacion = (mensaje, tipo = "success", productoImg = null) => {
             </div>
         </div>
     `;
-
     Toastify({
         text: mensaje,
         duration: 3500,
@@ -504,32 +462,25 @@ const createNotificationNode = (mensaje, tipo, productoImg) => {
         error: "✕",
         info: "ℹ"
     };
-
     const div = document.createElement('div');
     div.style.cssText = 'display: flex; align-items: center; gap: 1rem;';
-
     if (productoImg) {
         const img = document.createElement('img');
         img.src = productoImg;
         img.style.cssText = 'width: 50px; height: 70px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);';
         div.appendChild(img);
     }
-
     const contentDiv = document.createElement('div');
     contentDiv.style.cssText = 'flex: 1;';
-
     const icon = document.createElement('div');
     icon.style.cssText = 'font-size: 1.5rem; margin-bottom: 0.25rem;';
     icon.textContent = iconos[tipo] || iconos.success;
-
     const text = document.createElement('div');
     text.style.cssText = 'font-weight: 600;';
     text.textContent = mensaje;
-
     contentDiv.appendChild(icon);
     contentDiv.appendChild(text);
     div.appendChild(contentDiv);
-
     return div;
 };
 
@@ -545,7 +496,6 @@ const setupSortListener = () => {
 
 const sortProducts = (sortType) => {
     let sortedData = [...productosFiltrados];
-
     switch (sortType) {
         case 'price-asc':
             sortedData.sort((a, b) => a.precio - b.precio);
@@ -568,7 +518,6 @@ const sortProducts = (sortType) => {
             sortedData = [...productosFiltrados];
             break;
     }
-
     listaProductos.innerHTML = '';
     pintarProductos(sortedData);
     eventoBotones(sortedData);
@@ -582,24 +531,18 @@ const initCarousel = () => {
     const dots = document.querySelectorAll('.carousel-dot');
     const prevBtn = document.querySelector('#carousel-prev');
     const nextBtn = document.querySelector('#carousel-next');
-
     if (!slides.length) return;
-
-    // Auto slide every 8 seconds
     const startAutoSlide = () => {
         carouselInterval = setInterval(() => {
             nextSlide();
         }, 8000);
     };
-
     const stopAutoSlide = () => {
         clearInterval(carouselInterval);
     };
-
     const showSlide = (index) => {
         slides.forEach(slide => slide.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
-
         if (index >= slides.length) {
             currentSlide = 0;
         } else if (index < 0) {
@@ -607,20 +550,15 @@ const initCarousel = () => {
         } else {
             currentSlide = index;
         }
-
         slides[currentSlide].classList.add('active');
         dots[currentSlide].classList.add('active');
     };
-
     const nextSlide = () => {
         showSlide(currentSlide + 1);
     };
-
     const prevSlide = () => {
         showSlide(currentSlide - 1);
     };
-
-    // Event listeners for navigation buttons
     prevBtn.addEventListener('click', () => {
         prevSlide();
         stopAutoSlide();
@@ -632,8 +570,6 @@ const initCarousel = () => {
         stopAutoSlide();
         startAutoSlide();
     });
-
-    // Event listeners for dots
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             showSlide(index);
@@ -641,14 +577,12 @@ const initCarousel = () => {
             startAutoSlide();
         });
     });
-
     const carouselContainer = document.querySelector('.carousel-container');
     carouselContainer.addEventListener('mouseenter', stopAutoSlide);
     carouselContainer.addEventListener('mouseleave', startAutoSlide);
     startAutoSlide();
 };
 
-// ===== MOBILE SIDEBAR FUNCTIONALITY =====
 const setupMobileSidebar = () => {
     const btnHamburger = document.getElementById('btn-hamburger');
     const btnCloseSidebar = document.getElementById('btn-close-sidebar');
@@ -656,21 +590,14 @@ const setupMobileSidebar = () => {
     const mobileOverlay = document.getElementById('mobile-sidebar-overlay');
     const mobileSearchInput = document.getElementById('mobile-search-input');
     const mobileSortSelect = document.getElementById('mobile-sort-select');
-
     if (!btnHamburger || !mobileSidebar) return;
-
-    // Open sidebar
     btnHamburger.addEventListener('click', () => {
         mobileSidebar.classList.add('active');
         mobileOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
     });
-
-    // Close sidebar
     btnCloseSidebar.addEventListener('click', closeMobileSidebar);
     mobileOverlay.addEventListener('click', closeMobileSidebar);
-
-    // Mobile search sync with desktop
     if (mobileSearchInput) {
         mobileSearchInput.addEventListener('input', (e) => {
             const desktopSearchInput = document.getElementById('search-input');
@@ -680,8 +607,6 @@ const setupMobileSidebar = () => {
             }
         });
     }
-
-    // Mobile sort sync with desktop
     if (mobileSortSelect) {
         mobileSortSelect.addEventListener('change', (e) => {
             const desktopSortSelect = document.getElementById('sort-select');
