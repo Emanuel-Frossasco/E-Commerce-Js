@@ -7,16 +7,37 @@
     <title>Finalizar Compra - Manga Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/checkout-styles.css">
 </head>
 
 <body class="checkout-page">
     <div class="checkout-page-container">
+        <!-- Header -->
         <div class="checkout-page-header">
             <h1><i class='bx bx-shopping-bag'></i> Finalizar Compra</h1>
             <p>Completa tus datos para finalizar tu pedido</p>
         </div>
+
+        <!-- Guest Checkout Toggle -->
+        <div class="checkout-mode-section">
+            <div class="checkout-mode-toggle">
+                <button class="mode-btn active" data-mode="guest" type="button">
+                    <i class='bx bx-user'></i>
+                    <span>Comprar como invitado</span>
+                </button>
+                <button class="mode-btn" data-mode="register" type="button">
+                    <i class='bx bx-user-plus'></i>
+                    <span>Crear cuenta</span>
+                </button>
+            </div>
+            <p class="mode-description">
+                <i class='bx bx-info-circle'></i>
+                <span id="mode-text">Compra rápida sin necesidad de crear una cuenta</span>
+            </p>
+        </div>
+
         <div class="checkout-page-body">
             <!-- Formulario -->
             <div class="checkout-page-form">
@@ -29,78 +50,194 @@
                                 <label class="form-label">Nombre completo *</label>
                                 <input type="text" class="form-control" id="nombre" required>
                                 <div class="invalid-feedback">Por favor ingresa tu nombre completo</div>
+                                <div class="valid-feedback"><i class='bx bx-check-circle'></i> Correcto</div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Email *</label>
                                 <input type="email" class="form-control" id="email" required>
                                 <div class="invalid-feedback">Por favor ingresa un email válido</div>
+                                <div class="valid-feedback"><i class='bx bx-check-circle'></i> Correcto</div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Teléfono *</label>
-                                <input type="tel" class="form-control" id="telefono" required>
-                                <div class="invalid-feedback">Por favor ingresa tu teléfono</div>
+                                <input type="tel" class="form-control" id="telefono" placeholder="11 1234-5678"
+                                    required>
+                                <div class="invalid-feedback">Ingresa un teléfono válido (10 dígitos)</div>
+                                <div class="valid-feedback"><i class='bx bx-check-circle'></i> Correcto</div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">DNI *</label>
-                                <input type="text" class="form-control" id="dni" required>
-                                <div class="invalid-feedback">Por favor ingresa tu DNI</div>
+                                <input type="text" class="form-control" id="dni" placeholder="12345678" required>
+                                <div class="invalid-feedback">Ingresa un DNI válido (7-8 dígitos)</div>
+                                <div class="valid-feedback"><i class='bx bx-check-circle'></i> Correcto</div>
+                            </div>
+                            <!-- Password fields (only for register mode) -->
+                            <div class="col-md-6 register-only" style="display: none;">
+                                <label class="form-label">Contraseña *</label>
+                                <input type="password" class="form-control" id="password">
+                                <div class="invalid-feedback">Mínimo 6 caracteres</div>
+                            </div>
+                            <div class="col-md-6 register-only" style="display: none;">
+                                <label class="form-label">Confirmar Contraseña *</label>
+                                <input type="password" class="form-control" id="password-confirm">
+                                <div class="invalid-feedback">Las contraseñas no coinciden</div>
                             </div>
                         </div>
                     </div>
+
                     <!-- Dirección de Envío -->
                     <div class="checkout-section">
                         <h6><i class='bx bx-map'></i> Dirección de Envío</h6>
                         <div class="row g-3">
-                            <div class="col-md-8">
-                                <label class="form-label">Dirección *</label>
-                                <input type="text" class="form-control" id="direccion" required>
-                                <div class="invalid-feedback">Por favor ingresa tu dirección</div>
+                            <div class="col-md-4">
+                                <label class="form-label">Código Postal *</label>
+                                <input type="text" class="form-control" id="cp" placeholder="1000" required>
+                                <div class="invalid-feedback">Código postal inválido</div>
+                                <div class="valid-feedback"><i class='bx bx-check-circle'></i> Correcto</div>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label">Número *</label>
-                                <input type="text" class="form-control" id="numero" required>
+                                <label class="form-label">Provincia *</label>
+                                <input type="text" class="form-control" id="provincia" readonly required>
                                 <div class="invalid-feedback">Requerido</div>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Ciudad *</label>
-                                <input type="text" class="form-control" id="ciudad" required>
+                                <input type="text" class="form-control" id="ciudad" readonly required>
                                 <div class="invalid-feedback">Requerido</div>
                             </div>
-                            <div class="col-md-4">
-                                <label class="form-label">Provincia *</label>
-                                <input type="text" class="form-control" id="provincia" required>
-                                <div class="invalid-feedback">Requerido</div>
+                            <div class="col-md-8">
+                                <label class="form-label">Calle *</label>
+                                <input type="text" class="form-control" id="direccion" placeholder="Av. Corrientes"
+                                    required>
+                                <div class="invalid-feedback">Por favor ingresa tu dirección</div>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label">Código Postal *</label>
-                                <input type="text" class="form-control" id="cp" required>
+                                <label class="form-label">Número *</label>
+                                <input type="text" class="form-control" id="numero" placeholder="1234" required>
                                 <div class="invalid-feedback">Requerido</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Piso/Depto (opcional)</label>
+                                <input type="text" class="form-control" id="piso" placeholder="5° A">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Referencias (opcional)</label>
+                                <input type="text" class="form-control" id="referencias" placeholder="Entre calles...">
                             </div>
                         </div>
                     </div>
+
                     <!-- Método de Pago -->
                     <div class="checkout-section">
                         <h6><i class='bx bx-credit-card'></i> Método de Pago</h6>
                         <div class="payment-methods">
+                            <!-- MercadoPago -->
+                            <div class="payment-option">
+                                <input type="radio" name="payment" id="mercadopago" value="mercadopago"
+                                    class="form-check-input">
+                                <label class="form-check-label" for="mercadopago">
+                                    <div class="payment-icon mercadopago-icon">
+                                        <img src="./assets/payment-logos/mercadopago.webp" alt="MercadoPago"
+                                            class="payment-logo">
+                                    </div>
+                                    <div class="payment-info">
+                                        <strong>MercadoPago</strong>
+                                        <small>Paga con tarjeta, débito o efectivo</small>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <!-- PayPal -->
+                            <div class="payment-option">
+                                <input type="radio" name="payment" id="paypal" value="paypal" class="form-check-input">
+                                <label class="form-check-label" for="paypal">
+                                    <div class="payment-icon paypal-icon">
+                                        <img src="./assets/payment-logos/paypal.png" alt="PayPal" class="payment-logo">
+                                    </div>
+                                    <div class="payment-info">
+                                        <strong>PayPal</strong>
+                                        <small>Pago seguro internacional</small>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <!-- Tarjeta de Crédito/Débito -->
                             <div class="payment-option">
                                 <input type="radio" name="payment" id="tarjeta" value="tarjeta" class="form-check-input"
                                     required>
                                 <label class="form-check-label" for="tarjeta">
-                                    <i class='bx bx-credit-card'></i> Tarjeta de Crédito/Débito
+                                    <div class="payment-icon card-icon">
+                                        <i class='bx bx-credit-card'></i>
+                                    </div>
+                                    <div class="payment-info">
+                                        <strong>Tarjeta de Crédito/Débito</strong>
+                                        <small>Visa, Mastercard, American Express</small>
+                                    </div>
                                 </label>
+                                <!-- Card Form -->
+                                <div class="card-form" id="card-form" style="display: none;">
+                                    <div class="row g-3 mt-2">
+                                        <div class="col-12">
+                                            <label class="form-label">Número de Tarjeta *</label>
+                                            <div class="card-number-input">
+                                                <input type="text" class="form-control" id="card-number"
+                                                    placeholder="1234 5678 9012 3456" maxlength="19">
+                                                <div class="card-brands">
+                                                    <i class='bx bxl-visa' id="visa-icon"></i>
+                                                    <i class='bx bxl-mastercard' id="mastercard-icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="invalid-feedback">Número de tarjeta inválido</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Nombre en la Tarjeta *</label>
+                                            <input type="text" class="form-control" id="card-name"
+                                                placeholder="JUAN PEREZ">
+                                            <div class="invalid-feedback">Requerido</div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label class="form-label">Vencimiento *</label>
+                                            <input type="text" class="form-control" id="card-expiry" placeholder="MM/AA"
+                                                maxlength="5">
+                                            <div class="invalid-feedback">MM/AA</div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label class="form-label">CVV *</label>
+                                            <input type="text" class="form-control" id="card-cvv" placeholder="123"
+                                                maxlength="4">
+                                            <div class="invalid-feedback">CVV inválido</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
+                            <!-- Transferencia Bancaria -->
                             <div class="payment-option">
                                 <input type="radio" name="payment" id="transferencia" value="transferencia"
                                     class="form-check-input">
                                 <label class="form-check-label" for="transferencia">
-                                    <i class='bx bx-transfer'></i> Transferencia Bancaria
+                                    <div class="payment-icon transfer-icon">
+                                        <i class='bx bx-transfer'></i>
+                                    </div>
+                                    <div class="payment-info">
+                                        <strong>Transferencia Bancaria</strong>
+                                        <small>Recibirás los datos bancarios por email</small>
+                                    </div>
                                 </label>
                             </div>
+
+                            <!-- Efectivo -->
                             <div class="payment-option">
                                 <input type="radio" name="payment" id="efectivo" value="efectivo"
                                     class="form-check-input">
                                 <label class="form-check-label" for="efectivo">
-                                    <i class='bx bx-money'></i> Efectivo (Pago contra entrega)
+                                    <div class="payment-icon cash-icon">
+                                        <i class='bx bx-money'></i>
+                                    </div>
+                                    <div class="payment-info">
+                                        <strong>Efectivo</strong>
+                                        <small>Pago contra entrega</small>
+                                    </div>
                                 </label>
                             </div>
                         </div>
@@ -108,7 +245,9 @@
                             Por favor selecciona un método de pago
                         </div>
                     </div>
-                    <div class="d-flex gap-3">
+
+                    <!-- Botones -->
+                    <div class="d-flex gap-3 mt-4">
                         <a href="index.html" class="btn btn-secondary btn-lg">
                             <i class='bx bx-arrow-back'></i> Volver
                         </a>
@@ -118,18 +257,59 @@
                     </div>
                 </form>
             </div>
+
             <!-- Resumen del Pedido -->
             <div class="checkout-page-summary">
                 <h5><i class='bx bx-receipt'></i> Resumen del Pedido</h5>
                 <div id="order-items"></div>
+
+                <!-- Cupón de Descuento -->
+                <div class="coupon-section">
+                    <h6><i class='bx bx-gift'></i> Cupón de Descuento</h6>
+                    <div class="coupon-input-group">
+                        <input type="text" class="form-control" id="coupon-code" placeholder="Ingresa tu cupón">
+                        <button type="button" class="btn btn-outline-primary" id="apply-coupon">
+                            Aplicar
+                        </button>
+                    </div>
+                    <div id="coupon-message" class="coupon-message"></div>
+                </div>
+
+                <!-- Desglose de Costos -->
+                <div class="cost-breakdown">
+                    <div class="cost-item">
+                        <span>Subtotal:</span>
+                        <span id="subtotal-amount">$0</span>
+                    </div>
+                    <div class="cost-item shipping-cost">
+                        <span>
+                            <i class='bx bx-truck'></i> Envío:
+                        </span>
+                        <span id="shipping-amount">-</span>
+                    </div>
+                    <div class="cost-item discount-cost" id="discount-row" style="display: none;">
+                        <span>
+                            <i class='bx bx-gift'></i> Descuento:
+                        </span>
+                        <span class="text-success" id="discount-amount">-$0</span>
+                    </div>
+                </div>
+
                 <div class="checkout-page-total">
                     <span>TOTAL A PAGAR:</span>
                     <span id="total-amount">$0</span>
                 </div>
+
+                <div class="secure-checkout-badge">
+                    <i class='bx bx-lock-alt'></i>
+                    <span>Pago 100% seguro y encriptado</span>
+                </div>
             </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="js/checkout-page.js"></script>
 </body>
 
