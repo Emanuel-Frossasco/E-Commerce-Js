@@ -31,6 +31,16 @@ document.addEventListener("DOMContentLoaded", (e) => {
     setupSortListener();
     setupMobileSidebar();
     initCarousel();
+
+    // Initialize AOS (Animate On Scroll)
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true,
+            easing: 'ease-in-out'
+        });
+    }
 });
 
 const fetchData = async () => {
@@ -165,8 +175,16 @@ const pintarProductos = (data) => {
         return;
     }
     const fragment = new DocumentFragment();
-    data.forEach((producto) => {
+    data.forEach((producto, index) => {
         const clone = template.content.cloneNode(true);
+
+        // Add AOS animation to the product card
+        const cardCol = clone.querySelector('.col-12');
+        if (cardCol) {
+            cardCol.setAttribute('data-aos', 'fade-up');
+            cardCol.setAttribute('data-aos-duration', '600');
+            cardCol.setAttribute('data-aos-delay', `${index * 50}`); // Staggered animation
+        }
 
         // Image
         clone.querySelector("img").setAttribute("src", producto.thumbnailUrl);
@@ -210,6 +228,11 @@ const pintarProductos = (data) => {
     });
 
     listaProductos.appendChild(fragment);
+
+    // Refresh AOS to detect new elements
+    if (typeof AOS !== 'undefined') {
+        AOS.refresh();
+    }
 };
 
 const eventoBotones = (data) => {

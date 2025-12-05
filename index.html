@@ -162,9 +162,55 @@
     </div>
   </div>
 
+  <!-- Features Bar -->
+  <div class="features-bar">
+    <div class="features-container">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <i class='bx bxs-truck'></i>
+        </div>
+        <div class="feature-content">
+          <h4>Envíos</h4>
+          <p>Envíos a todo el país</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <i class='bx bx-credit-card'></i>
+        </div>
+        <div class="feature-content">
+          <h4>Medios de pago</h4>
+          <p>Aceptamos todos los medios de pago disponibles</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+        <div class="feature-content">
+          <h4>Seguridad</h4>
+          <p>Tus datos siempre protegidos</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <i class='bx bxl-whatsapp'></i>
+        </div>
+        <div class="feature-content">
+          <h4>Consulta tus dudas</h4>
+          <p>Contactanos por WhatsApp</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container">
     <!-- Filtros de categoría -->
-    <div class="filtros-container my-4" id="filtros-container">
+    <div class="filtros-container my-4" id="filtros-container" data-aos="fade-up" data-aos-duration="800"
+      data-aos-delay="100">
       <h5 class="filtros-titulo">Categorías:</h5>
       <div class="filtros-botones" id="filtros-botones">
         <!-- Los botones se generan dinámicamente -->
@@ -172,7 +218,7 @@
     </div>
 
     <!-- Ordenar productos -->
-    <div class="sort-container my-3">
+    <div class="sort-container my-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
       <label for="sort-select" class="sort-label">
         <i class='bx bx-sort'></i> Ordenar por:
       </label>
@@ -467,6 +513,8 @@
     crossorigin="anonymous"></script>
   <!-- Toastify JS -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <!-- AOS (Animate On Scroll) JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <!-- App JS -->
   <script src="js/app.js"></script>
 </body>
