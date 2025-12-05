@@ -661,6 +661,11 @@ body {
   }
 }
 
+/* Scroll offset for anchor links (to account for fixed navbar) */
+#categorias {
+  scroll-margin-top: 100px;
+}
+
 /* ===== FILTROS ===== */
 .filtros-container {
   text-align: center;
