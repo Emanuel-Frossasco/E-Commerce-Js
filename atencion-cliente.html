@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Atención al Cliente - Manga Store. Preguntas frecuentes, envíos, devoluciones y contacto">
+    <meta name="keywords" content="ATENCION AL CLIENTE, SOPORTE, FAQ, CONTACTO, MANGA STORE">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/customer-service.css">
+    <title>Atención al Cliente - Manga Store</title>
+</head>
+
+<body class="landing-page">
+    <nav class="navbar navbar-expand-lg navegacion">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                Manga Store
+            </a>
+            <button class="btn-hamburger" id="btn-hamburger" aria-label="Menú">
+                <i class='bx bx-menu'></i>
+            </button>
+            <div class="navbar-content d-flex align-items-center gap-3">
+                <div class="search-container">
+                    <input class="form-control search-input" type="search" id="search-input"
+                        placeholder="Buscar manga..." aria-label="Search" autocomplete="off">
+                    <i class='bx bx-search search-icon'></i>
+                    <div class="search-suggestions" id="search-suggestions"></div>
+                </div>
+            </div>
+            <button class="cart-icon-btn" id="open-cart" aria-label="Abrir carrito">
+                <i class='bx bx-cart'></i>
+                <span class="cart-badge" id="cart-badge">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-sidebar" id="mobile-sidebar">
+        <div class="mobile-sidebar-header">
+            <h3>Menú</h3>
+            <button class="btn-close-sidebar" id="btn-close-sidebar" aria-label="Cerrar menú">
+                <i class='bx bx-x'></i>
+            </button>
+        </div>
+        <div class="mobile-sidebar-content">
+            <div class="mobile-search">
+                <input class="form-control" type="search" id="mobile-search-input" placeholder="Buscar manga..."
+                    aria-label="Search">
+                <i class='bx bx-search'></i>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-sidebar-overlay" id="mobile-sidebar-overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="cs-hero">
+        <div class="container">
+            <div class="cs-hero-content" data-aos="fade-up">
+                <h1><i class='bx bx-support'></i> Atención al Cliente</h1>
+                <p>Estamos aquí para ayudarte. Encuentra respuestas a tus preguntas</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="cs-landing-section">
+        <div class="container">
+            <div class="cs-section-header" data-aos="fade-up">
+                <i class='bx bx-help-circle'></i>
+                <h2>Preguntas Frecuentes</h2>
+                <p>Encuentra respuestas rápidas a las preguntas más comunes</p>
+            </div>
+            <div class="accordion" id="faqAccordion" data-aos="fade-up" data-aos-delay="100">
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            ¿Cómo puedo realizar un pedido?
+                        </button>
+                    </h3>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Para realizar un pedido, simplemente navega por nuestro catálogo, selecciona los
+                            mangas que desees y agrégalos al carrito. Luego, haz clic en el ícono del carrito y
+                            procede al checkout. Completa tus datos de envío y pago, y ¡listo! Recibirás una
+                            confirmación por email.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq2">
+                            ¿Qué métodos de pago aceptan?
+                        </button>
+                    </h3>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Aceptamos tarjetas de crédito y débito (Visa, Mastercard, American Express),
+                            transferencias bancarias y pago en efectivo contra entrega. Todos los pagos son
+                            procesados de forma segura.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq3">
+                            ¿Cuánto tarda el envío?
+                        </button>
+                    </h3>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Los tiempos de envío varían según tu ubicación. En Buenos Aires y alrededores, el
+                            envío tarda entre 2-4 días hábiles. Para el interior del país, entre 5-10 días
+                            hábiles. Recibirás un código de seguimiento para rastrear tu pedido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq4">
+                            ¿Puedo cancelar mi pedido?
+                        </button>
+                    </h3>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Sí, puedes cancelar tu pedido dentro de las primeras 24 horas después de haberlo
+                            realizado. Contáctanos por email o teléfono con tu número de pedido. Si el pedido ya
+                            fue despachado, deberás esperar a recibirlo y solicitar una devolución.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq5">
+                            ¿Los mangas están en español?
+                        </button>
+                    </h3>
+                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Sí, todos nuestros mangas están en español, publicados por editoriales argentinas
+                            como Ivrea, Panini y otras. Cada producto especifica claramente el idioma en su
+                            descripción.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq6">
+                            ¿Tienen stock de todos los productos?
+                        </button>
+                    </h3>
+                    <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Mantenemos nuestro stock actualizado en tiempo real. Si un producto muestra "En
+                            stock" en su página, está disponible para envío inmediato. Los productos con stock
+                            limitado muestran la cantidad disponible. Si un producto está agotado, puedes
+                            suscribirte para recibir una notificación cuando vuelva a estar disponible.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Envíos y Devoluciones Section -->
+    <section id="envios" class="cs-landing-section cs-alt-bg">
+        <div class="container">
+            <div class="cs-section-header" data-aos="fade-up">
+                <i class='bx bx-package'></i>
+                <h2>Envíos y Devoluciones</h2>
+                <p>Información sobre nuestros tiempos de entrega y políticas de devolución</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="cs-info-card">
+                        <div class="cs-info-card-icon">
+                            <i class='bx bx-truck'></i>
+                        </div>
+                        <h4>Información de Envíos</h4>
+                        <p>Realizamos envíos a todo el país a través de correo argentino y empresas de mensajería
+                            privada.</p>
+
+                        <h5>Tiempos de Entrega:</h5>
+                        <ul>
+                            <li><strong>CABA y GBA:</strong> 2-4 días hábiles</li>
+                            <li><strong>Interior del país:</strong> 5-10 días hábiles</li>
+                            <li><strong>Zonas alejadas:</strong> 10-15 días hábiles</li>
+                        </ul>
+
+                        <h5>Costos de Envío:</h5>
+                        <ul>
+                            <li><strong>Envío estándar:</strong> $800 - $1500 (según zona)</li>
+                            <li><strong>Envío express (CABA/GBA):</strong> $2000</li>
+                            <li><strong>Envío gratis:</strong> En compras superiores a $15.000</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="cs-info-card">
+                        <div class="cs-info-card-icon">
+                            <i class='bx bx-revision'></i>
+                        </div>
+                        <h4>Política de Devoluciones</h4>
+                        <p>Aceptamos devoluciones dentro de los 30 días posteriores a la recepción del pedido.</p>
+
+                        <h5>Condiciones para Devoluciones:</h5>
+                        <ul>
+                            <li>El producto debe estar en su estado original, sin usar y con el embalaje intacto</li>
+                            <li>Debes incluir el comprobante de compra</li>
+                            <li>Los gastos de envío de la devolución corren por cuenta del cliente (excepto en caso de
+                                producto defectuoso)</li>
+                        </ul>
+
+                        <h5>Proceso de Devolución:</h5>
+                        <ol>
+                            <li>Contacta a nuestro servicio de atención al cliente</li>
+                            <li>Proporciona tu número de pedido y motivo de devolución</li>
+                            <li>Recibirás instrucciones para el envío de devolución</li>
+                            <li>Una vez recibido y verificado el producto, procesaremos tu reembolso en 5-7 días hábiles
+                            </li>
+                        </ol>
+
+                        <div class="alert alert-info mt-3">
+                            <i class='bx bx-info-circle'></i> <strong>Nota:</strong> Los productos en oferta o con
+                            descuento
+                            especial no son reembolsables, solo pueden ser cambiados por otro producto del mismo valor.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Términos y Condiciones Section -->
+    <section id="terminos" class="cs-landing-section">
+        <div class="container">
+            <div class="cs-section-header" data-aos="fade-up">
+                <i class='bx bx-file-blank'></i>
+                <h2>Términos y Condiciones</h2>
+                <p>Lee nuestros términos de uso y condiciones de servicio</p>
+            </div>
+
+            <div class="cs-content-box" data-aos="fade-up" data-aos-delay="100">
+                <h4>1. Aceptación de los Términos</h4>
+                <p>Al acceder y utilizar este sitio web, aceptas estar sujeto a estos términos y condiciones de uso.
+                    Si no estás de acuerdo con alguna parte de estos términos, no debes usar nuestro sitio.</p>
+
+                <h4>2. Uso del Sitio Web</h4>
+                <p>Este sitio web está destinado únicamente para uso personal y no comercial. No puedes:</p>
+                <ul>
+                    <li>Reproducir, duplicar o copiar material del sitio sin autorización</li>
+                    <li>Usar el sitio de manera que cause daño o perjuicio</li>
+                    <li>Realizar actividades ilegales o fraudulentas</li>
+                </ul>
+
+                <h4>3. Productos y Precios</h4>
+                <p>Nos esforzamos por mantener la información de productos y precios actualizada. Sin embargo, nos
+                    reservamos el derecho de:</p>
+                <ul>
+                    <li>Modificar precios sin previo aviso</li>
+                    <li>Corregir errores de precio o descripción</li>
+                    <li>Limitar cantidades de compra</li>
+                    <li>Descontinuar productos</li>
+                </ul>
+
+                <h4>4. Compra y Pago</h4>
+                <p>Al realizar una compra, garantizas que:</p>
+                <ul>
+                    <li>Eres mayor de 18 años o tienes autorización de un adulto</li>
+                    <li>La información proporcionada es verdadera y precisa</li>
+                    <li>Tienes autorización para usar el método de pago seleccionado</li>
+                </ul>
+
+                <h4>5. Propiedad Intelectual</h4>
+                <p>Todo el contenido del sitio, incluyendo textos, gráficos, logos, imágenes y software, es
+                    propiedad de Manga Store o sus proveedores de contenido y está protegido por las leyes de
+                    propiedad intelectual.</p>
+
+                <h4>6. Limitación de Responsabilidad</h4>
+                <p>Manga Store no será responsable por daños indirectos, incidentales o consecuentes que resulten
+                    del uso o la imposibilidad de usar nuestro sitio o productos.</p>
+
+                <h4>7. Modificaciones</h4>
+                <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán
+                    en vigor inmediatamente después de su publicación en el sitio.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Política de Privacidad Section -->
+    <section id="privacidad" class="cs-landing-section cs-alt-bg">
+        <div class="container">
+            <div class="cs-section-header" data-aos="fade-up">
+                <i class='bx bx-shield'></i>
+                <h2>Política de Privacidad</h2>
+                <p>Conoce cómo protegemos y utilizamos tu información personal</p>
+            </div>
+
+            <div class="cs-content-box" data-aos="fade-up" data-aos-delay="100">
+                <h4>1. Información que Recopilamos</h4>
+                <p>Recopilamos la siguiente información cuando usas nuestro sitio:</p>
+                <ul>
+                    <li><strong>Información personal:</strong> Nombre, email, teléfono, dirección de envío</li>
+                    <li><strong>Información de pago:</strong> Datos de tarjeta (procesados de forma segura por
+                        nuestros proveedores)</li>
+                    <li><strong>Información de navegación:</strong> Dirección IP, tipo de navegador, páginas
+                        visitadas</li>
+                    <li><strong>Cookies:</strong> Para mejorar tu experiencia de usuario</li>
+                </ul>
+
+                <h4>2. Uso de la Información</h4>
+                <p>Utilizamos tu información para:</p>
+                <ul>
+                    <li>Procesar y enviar tus pedidos</li>
+                    <li>Comunicarnos contigo sobre tu pedido</li>
+                    <li>Mejorar nuestros productos y servicios</li>
+                    <li>Enviarte ofertas y promociones (solo si lo autorizas)</li>
+                    <li>Prevenir fraudes y garantizar la seguridad</li>
+                </ul>
+
+                <h4>3. Protección de Datos</h4>
+                <p>Implementamos medidas de seguridad para proteger tu información:</p>
+                <ul>
+                    <li>Encriptación SSL para transacciones</li>
+                    <li>Servidores seguros</li>
+                    <li>Acceso restringido a información personal</li>
+                    <li>Cumplimiento con la Ley de Protección de Datos Personales (Ley 25.326)</li>
+                </ul>
+
+                <h4>4. Cookies</h4>
+                <p>Utilizamos cookies para:</p>
+                <ul>
+                    <li>Recordar tus preferencias</li>
+                    <li>Mantener tu sesión activa</li>
+                    <li>Analizar el tráfico del sitio</li>
+                    <li>Personalizar tu experiencia</li>
+                </ul>
+                <p>Puedes configurar tu navegador para rechazar cookies, pero esto puede afectar la funcionalidad
+                    del sitio.</p>
+
+                <h4>5. Compartir Información</h4>
+                <p>No vendemos ni alquilamos tu información personal a terceros. Solo compartimos información con:
+                </p>
+                <ul>
+                    <li>Proveedores de servicios de envío</li>
+                    <li>Procesadores de pago</li>
+                    <li>Autoridades legales cuando sea requerido por ley</li>
+                </ul>
+
+                <h4>6. Tus Derechos</h4>
+                <p>Tienes derecho a:</p>
+                <ul>
+                    <li>Acceder a tu información personal</li>
+                    <li>Corregir datos inexactos</li>
+                    <li>Solicitar la eliminación de tus datos</li>
+                    <li>Oponerte al procesamiento de tus datos</li>
+                    <li>Retirar tu consentimiento en cualquier momento</li>
+                </ul>
+
+                <div class="alert alert-info mt-3">
+                    <i class='bx bx-info-circle'></i> Para ejercer tus derechos, contáctanos en
+                    privacy@mangastore.com
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="cs-landing-section">
+        <div class="container">
+            <div class="cs-section-header" data-aos="fade-up">
+                <i class='bx bx-envelope'></i>
+                <h2>Contacto</h2>
+                <p>¿Tienes alguna pregunta? Estamos aquí para ayudarte</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <h4>Información de Contacto</h4>
+                    <div class="contact-info-item">
+                        <i class='bx bx-map'></i>
+                        <div>
+                            <strong>Dirección</strong>
+                            <p>Av. Corrientes 1234, Buenos Aires, Argentina</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class='bx bx-envelope'></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p>info@mangastore.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class='bx bx-phone'></i>
+                        <div>
+                            <strong>Teléfono</strong>
+                            <p>+54 11 1234-5678</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class='bx bx-time'></i>
+                        <div>
+                            <strong>Horario de Atención</strong>
+                            <p>Lunes a Viernes: 9:00 - 18:00<br>Sábados: 10:00 - 14:00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <h4>Envíanos un Mensaje</h4>
+                    <form id="contact-form" novalidate>
+                        <div class="mb-3">
+                            <label for="contact-name" class="form-label">Nombre *</label>
+                            <input type="text" class="form-control" id="contact-name" required>
+                            <div class="invalid-feedback">Por favor ingresa tu nombre</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact-email" class="form-label">Email *</label>
+                            <input type="email" class="form-control" id="contact-email" required>
+                            <div class="invalid-feedback">Por favor ingresa un email válido</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact-subject" class="form-label">Asunto *</label>
+                            <input type="text" class="form-control" id="contact-subject" required>
+                            <div class="invalid-feedback">Por favor ingresa un asunto</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact-message" class="form-label">Mensaje *</label>
+                            <textarea class="form-control" id="contact-message" rows="4" required></textarea>
+                            <div class="invalid-feedback">Por favor ingresa tu mensaje</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class='bx bx-send'></i> Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar (same as other pages) -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-cart" id="close-cart" aria-label="Cerrar carrito">
+                <i class='bx bx-x'></i>
+            </button>
+        </div>
+        <div class="cart-items-container" id="cart-items-container">
+            <div class="cart-empty" id="cart-empty">
+                <i class='bx bx-cart'></i>
+                <p>Tu carrito está vacío</p>
+                <small>¡Agrega algunos mangas!</small>
+            </div>
+            <div class="cart-items" id="cart-items"></div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal:</span>
+                <span class="subtotal-amount" id="subtotal-amount">$0</span>
+            </div>
+            <button class="btn-checkout" id="btn-checkout">
+                <i class='bx bx-check-circle'></i>
+                Proceder al Checkout
+            </button>
+            <button class="btn-clear-cart" id="btn-clear-cart">
+                <i class='bx bx-trash'></i>
+                Vaciar Carrito
+            </button>
+        </div>
+    </div>
+
+    <template id="template-cart-item">
+        <div class="cart-item">
+            <img src="" alt="" class="cart-item-img">
+            <div class="cart-item-info">
+                <h4 class="cart-item-title"></h4>
+                <p class="cart-item-price">$<span class="item-price"></span></p>
+                <div class="cart-item-controls">
+                    <button class="btn-cart-decrease" aria-label="Disminuir cantidad">
+                        <i class='bx bx-minus'></i>
+                    </button>
+                    <span class="cart-item-quantity">1</span>
+                    <button class="btn-cart-increase" aria-label="Aumentar cantidad">
+                        <i class='bx bx-plus'></i>
+                    </button>
+                    <button class="btn-cart-remove" aria-label="Eliminar producto">
+                        <i class='bx bx-trash'></i>
+                    </button>
+                </div>
+                <p class="cart-item-total">Total: $<span class="item-total"></span></p>
+            </div>
+        </div>
+    </template>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Manga Store</h3>
+                    <p>Tu tienda online de confianza para los mejores mangas. Encuentra las últimas novedades y clásicos
+                        imprescindibles.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class='bx bxl-facebook'></i></a>
+                        <a href="#" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                        <a href="#" aria-label="Twitter"><i class='bx bxl-twitter'></i></a>
+                        <a href="#" aria-label="Discord"><i class='bx bxl-discord'></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class='bx bx-chevron-right'></i>Inicio</a></li>
+                        <li><a href="productos.html"><i class='bx bx-chevron-right'></i>Catálogo</a></li>
+                        <li><a href="index.html#novedades"><i class='bx bx-chevron-right'></i>Novedades</a></li>
+                        <li><a href="sobre-nosotros.html"><i class='bx bx-chevron-right'></i>Sobre Nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Atención al Cliente</h3>
+                    <ul class="footer-links">
+                        <li><a href="atencion-cliente.html#faq"><i class='bx bx-chevron-right'></i>Preguntas
+                                Frecuentes</a></li>
+                        <li><a href="atencion-cliente.html#envios"><i class='bx bx-chevron-right'></i>Envíos y
+                                Devoluciones</a></li>
+                        <li><a href="atencion-cliente.html#terminos"><i class='bx bx-chevron-right'></i>Términos y
+                                Condiciones</a></li>
+                        <li><a href="atencion-cliente.html#privacidad"><i class='bx bx-chevron-right'></i>Política de
+                                Privacidad</a></li>
+                        <li><a href="atencion-cliente.html#contacto"><i class='bx bx-chevron-right'></i>Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul class="contact-info">
+                        <li><i class='bx bx-map'></i><span>Buenos Aires, Argentina</span></li>
+                        <li><i class='bx bx-envelope'></i><span>info@mangastore.com</span></li>
+                        <li><i class='bx bx-phone'></i><span>+54 11 1234-5678</span></li>
+                        <li><i class='bx bx-time'></i><span>Lun - Vie: 9:00 - 18:00</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Manga Store. Desarrollado por <a href="#">Emanuel Frossasco</a>. Todos los derechos
+                    reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/atencion-cliente.js"></script>
+</body>
+
+</html>
