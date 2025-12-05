@@ -370,6 +370,15 @@
     </div>
   </template>
 
+  <!-- Template para resumen de checkout -->
+  <template id="template-checkout-item">
+    <div class="checkout-item">
+      <span class="checkout-item-title"></span>
+      <span class="checkout-item-quantity"></span>
+      <span class="checkout-item-price"></span>
+    </div>
+  </template>
+
   <!-- Modal de confirmación de compra -->
   <div class="modal fade" id="modal-compra" tabindex="-1" aria-labelledby="modalCompraLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -422,6 +431,159 @@
               </button>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel de resumen FUERA del modal -->
+  <div id="checkout-summary-panel"
+    style="position: fixed; top: 80px; right: 20px; width: 350px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); z-index: 9999; display: none;">
+    <h6 style="margin-bottom: 1rem; color: #2c3e50; font-weight: 700;">
+      <i class='bx bx-receipt' style="color: #43ed00; font-size: 1.5rem;"></i> Resumen de tu pedido
+    </h6>
+    <div id="resumen-compra"></div>
+  </div>
+
+  <!-- Modal Checkout -->
+  <div class="modal fade" id="modal-checkout" tabindex="-1" aria-labelledby="modalCheckoutLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalCheckoutLabel">
+            <i class='bx bx-shopping-bag'></i> Finalizar Compra
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Formulario de checkout -->
+          <form id="checkout-form" novalidate>
+            <!-- Información Personal -->
+            <div class="checkout-section">
+              <h6><i class='bx bx-user'></i> Información Personal</h6>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="checkout-name" class="form-label">Nombre completo *</label>
+                  <input type="text" class="form-control" id="checkout-name" required>
+                  <div class="invalid-feedback">
+                    Por favor ingresa tu nombre completo
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="checkout-email" class="form-label">Email *</label>
+                  <input type="email" class="form-control" id="checkout-email" required>
+                  <div class="invalid-feedback">
+                    Por favor ingresa un email válido
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="checkout-phone" class="form-label">Teléfono *</label>
+                  <input type="tel" class="form-control" id="checkout-phone" required>
+                  <div class="invalid-feedback">
+                    Por favor ingresa tu teléfono
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="checkout-dni" class="form-label">DNI *</label>
+                  <input type="text" class="form-control" id="checkout-dni" required>
+                  <div class="invalid-feedback">
+                    Por favor ingresa tu DNI
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dirección de Envío -->
+            <div class="checkout-section">
+              <h6><i class='bx bx-map'></i> Dirección de Envío</h6>
+              <div class="row">
+                <div class="col-md-8 mb-3">
+                  <label for="checkout-address" class="form-label">Dirección *</label>
+                  <input type="text" class="form-control" id="checkout-address" required>
+                  <div class="invalid-feedback">
+                    Por favor ingresa tu dirección
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="checkout-number" class="form-label">Número *</label>
+                  <input type="text" class="form-control" id="checkout-number" required>
+                  <div class="invalid-feedback">
+                    Número requerido
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label for="checkout-city" class="form-label">Ciudad *</label>
+                  <input type="text" class="form-control" id="checkout-city" required>
+                  <div class="invalid-feedback">
+                    Por favor ingresa tu ciudad
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="checkout-province" class="form-label">Provincia *</label>
+                  <input type="text" class="form-control" id="checkout-province" required>
+                  <div class="invalid-feedback">
+                    Por favor ingresa tu provincia
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="checkout-postal" class="form-label">Código Postal *</label>
+                  <input type="text" class="form-control" id="checkout-postal" required>
+                  <div class="invalid-feedback">
+                    Código postal requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Método de Pago -->
+            <div class="checkout-section">
+              <h6><i class='bx bx-credit-card'></i> Método de Pago</h6>
+              <div class="payment-methods">
+                <div class="form-check payment-option">
+                  <input class="form-check-input" type="radio" name="payment-method" id="payment-credit" value="credit"
+                    required>
+                  <label class="form-check-label" for="payment-credit">
+                    <i class='bx bx-credit-card'></i> Tarjeta de Crédito/Débito
+                  </label>
+                </div>
+                <div class="form-check payment-option">
+                  <input class="form-check-input" type="radio" name="payment-method" id="payment-transfer"
+                    value="transfer">
+                  <label class="form-check-label" for="payment-transfer">
+                    <i class='bx bx-transfer'></i> Transferencia Bancaria
+                  </label>
+                </div>
+                <div class="form-check payment-option">
+                  <input class="form-check-input" type="radio" name="payment-method" id="payment-cash" value="cash">
+                  <label class="form-check-label" for="payment-cash">
+                    <i class='bx bx-money'></i> Efectivo (Pago contra entrega)
+                  </label>
+                </div>
+                <div class="invalid-feedback d-block" id="payment-error" style="display: none !important;">
+                  Por favor selecciona un método de pago
+                </div>
+              </div>
+            </div>
+
+            <!-- Notas adicionales -->
+            <div class="checkout-section">
+              <label for="checkout-notes" class="form-label">Notas adicionales (opcional)</label>
+              <textarea class="form-control" id="checkout-notes" rows="3"
+                placeholder="Ej: Dejar en portería, llamar al llegar, etc."></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class='bx bx-x'></i> Cancelar
+          </button>
+          <button type="button" class="btn btn-primary" id="btn-confirmar-compra">
+            <i class='bx bx-check'></i> Confirmar Compra
+          </button>
         </div>
       </div>
     </div>

@@ -405,24 +405,8 @@ const actualizarContadorCarrito = () => {
 };
 
 const mostrarModalCompra = () => {
-    const nProductos = carrito.reduce((total, item) => total + item.cantidad, 0);
-    const nPrecio = carrito.reduce((total, item) => total + item.precioTotal, 0);
-    const resumenCompra = document.querySelector('#resumen-compra');
-    resumenCompra.innerHTML = `
-        <p><strong>Total de productos:</strong> ${nProductos}</p>
-        <p><strong>Total a pagar:</strong> $${nPrecio}</p>
-    `;
-    const modal = new bootstrap.Modal(document.getElementById('modal-compra'));
-    modal.show();
-    const btnConfirmar = document.querySelector('#confirmar-compra');
-    btnConfirmar.onclick = () => {
-        carrito = [];
-        renderCartSidebar();
-        guardarCarrito();
-        actualizarContadorCarrito();
-        modal.hide();
-        mostrarNotificacion("¡Compra realizada con éxito!", "success");
-    };
+    // Redirigir a página de checkout
+    window.location.href = 'checkout.html';
 };
 
 const mostrarNotificacion = (mensaje, tipo = "success", productoImg = null) => {

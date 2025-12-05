@@ -1,0 +1,123 @@
+/* ===== CHECKOUT PAGE STYLES ===== */
+
+/* Body específico para checkout */
+body.checkout-page {
+    background: #f8f9fa;
+    min-height: 100vh;
+    padding: 2rem 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Contenedor principal */
+.checkout-page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header del checkout */
+.checkout-page-header {
+    background: linear-gradient(135deg, #43ed00 0%, #06c000 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.checkout-page-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.checkout-page-header p {
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+}
+
+/* Body del checkout */
+.checkout-page-body {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* Resumen del pedido */
+.checkout-page-summary {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+}
+
+.checkout-page-summary h5 {
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkout-page-summary h5 i {
+    color: #43ed00;
+    font-size: 1.5rem;
+}
+
+/* Items del resumen */
+.checkout-page-summary .summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.checkout-page-summary .summary-item:last-of-type {
+    border-bottom: none;
+}
+
+/* Total */
+.checkout-page-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #43ed00;
+    border-top: 2px solid #333;
+    margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .checkout-page-body {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-page-summary {
+        position: static;
+    }
+}
+
+@media (max-width: 576px) {
+    body.checkout-page {
+        padding: 1rem 0;
+    }
+
+    .checkout-page-container {
+        border-radius: 0;
+    }
+
+    .checkout-page-body {
+        padding: 1rem;
+    }
+
+    .checkout-page-header h1 {
+        font-size: 1.5rem;
+    }
+}
