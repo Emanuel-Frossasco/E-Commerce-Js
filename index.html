@@ -208,26 +208,15 @@
   </div>
 
   <div class="container">
-    <!-- Filtros de categoría -->
-    <div class="filtros-container my-4" id="categorias" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-      <h5 class="filtros-titulo">Categorías:</h5>
-      <div class="filtros-botones" id="filtros-botones">
-        <!-- Los botones se generan dinámicamente -->
+    <!-- Section Title -->
+    <div class="section-header my-3" id="novedades" data-aos="fade-up">
+      <a href="productos.html" class="btn-ver-todos">
+        <i class='bx bx-grid-alt'></i> Ver Catálogo Completo
+      </a>
+      <div class="section-title">
+        <i class='bx bx-star'></i> Novedades y Ofertas Especiales
       </div>
-    </div>
-
-    <!-- Ordenar productos -->
-    <div class="sort-container my-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-      <label for="sort-select" class="sort-label">
-        <i class='bx bx-sort'></i> Ordenar por:
-      </label>
-      <select id="sort-select" class="sort-select">
-        <option value="default">Predeterminado</option>
-        <option value="price-asc">Precio: Menor a Mayor</option>
-        <option value="price-desc">Precio: Mayor a Menor</option>
-        <option value="popularity">Popularidad</option>
-        <option value="release-date">Fecha de Lanzamiento</option>
-      </select>
+      <p class="section-subtitle">Descubre los últimos lanzamientos y las mejores ofertas</p>
     </div>
 
     <!-- Mensaje cuando no hay resultados -->
@@ -394,43 +383,6 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           <button type="button" class="btn btn-success" id="confirmar-compra">Confirmar Compra</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal de Vista Rápida -->
-  <div class="modal fade" id="modal-quick-view" tabindex="-1" aria-labelledby="modalQuickViewLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content quick-view-modal">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalQuickViewLabel">Vista Rápida</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6">
-              <img src="" alt="" class="quick-view-img" id="quick-view-img">
-            </div>
-            <div class="col-md-6">
-              <h3 class="quick-view-title" id="quick-view-title"></h3>
-              <div class="quick-view-badges" id="quick-view-badges">
-                <!-- Badges dinámicos -->
-              </div>
-              <p class="quick-view-description" id="quick-view-description"></p>
-              <div class="quick-view-price-container">
-                <p class="quick-view-original-price" id="quick-view-original-price" style="display: none;">
-                  $<span id="quick-view-original-price-value"></span>
-                </p>
-                <p class="quick-view-current-price" id="quick-view-current-price">
-                  $<span id="quick-view-current-price-value"></span>
-                </p>
-              </div>
-              <button class="btn btn-add-to-cart-quick" id="btn-add-to-cart-quick">
-                <i class='bx bx-cart'></i> Agregar al Carrito
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -617,11 +569,10 @@
         <div class="footer-section">
           <h3>Enlaces Rápidos</h3>
           <ul class="footer-links">
-            <li><a href="#"><i class='bx bx-chevron-right'></i>Inicio</a></li>
-            <li><a href="#categorias"><i class='bx bx-chevron-right'></i>Catálogo</a></li>
-            <li><a href="#"><i class='bx bx-chevron-right'></i>Novedades</a></li>
-            <li><a href="#"><i class='bx bx-chevron-right'></i>Ofertas</a></li>
-            <li><a href="#"><i class='bx bx-chevron-right'></i>Sobre Nosotros</a></li>
+            <li><a href="index.html"><i class='bx bx-chevron-right'></i>Inicio</a></li>
+            <li><a href="productos.html"><i class='bx bx-chevron-right'></i>Catálogo</a></li>
+            <li><a href="index.html#novedades"><i class='bx bx-chevron-right'></i>Novedades</a></li>
+            <li><a href="sobre-nosotros.html"><i class='bx bx-chevron-right'></i>Sobre Nosotros</a></li>
           </ul>
         </div>
 

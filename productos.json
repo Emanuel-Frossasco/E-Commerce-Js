@@ -4,28 +4,75 @@
         "id": 1,
         "title": "TOKYO REVENGERS #02",
         "thumbnailUrl": "./assets/img/tokyo-revengers-2.jpg",
+        "images": [
+            "./assets/img/tokyo-revengers-2.jpg",
+            "./assets/img/tokyo-revengers-2.jpg",
+            "./assets/img/tokyo-revengers-2.jpg"
+        ],
         "isNew": true,
+        "esNovedad": true,
+        "enOferta": false,
         "description": "Takemichi viaja al pasado para salvar a sus amigos de un destino trágico. Acción, drama y pandillas en esta emocionante historia.",
+        "extendedDescription": "Takemichi Hanagaki es un desempleado de 26 años que descubre que puede viajar en el tiempo. Después de enterarse de que su ex novia de la secundaria, Hinata Tachibana, fue asesinada por la Tokyo Manji Gang, Takemichi viaja 12 años al pasado para intentar cambiar el futuro. En este segundo volumen, Takemichi se adentra más en el mundo de las pandillas mientras intenta comprender las complejas relaciones y jerarquías que eventualmente llevarán a la tragedia. Con cada decisión que toma, se da cuenta de que cambiar el futuro es más complicado de lo que pensaba.",
         "popularity": 95,
-        "releaseDate": "2024-12-01"
+        "releaseDate": "2024-12-01",
+        "stock": 8,
+        "specifications": {
+            "publisher": "Ivrea",
+            "author": "Ken Wakui",
+            "pages": "192",
+            "language": "Español",
+            "isbn": "978-987-783-234-5",
+            "dimensions": "13 x 18 cm"
+        },
+        "relatedProducts": [
+            7,
+            3,
+            5
+        ]
     },
     {
         "precio": 990,
         "id": 2,
         "title": "CHAINSAW MAN #01",
         "thumbnailUrl": "./assets/img/chainsaw-man-1.jpg",
+        "images": [
+            "./assets/img/chainsaw-man-1.jpg",
+            "./assets/img/chainsaw-man-1.jpg",
+            "./assets/img/chainsaw-man-1.jpg"
+        ],
         "isNew": true,
+        "esNovedad": true,
+        "enOferta": true,
         "discount": 20,
         "originalPrice": 1238,
+        "precioOriginal": 1238,
         "description": "Denji es un joven cazador de demonios que se fusiona con su perro-motosierra Pochita. ¡El inicio de una saga épica!",
+        "extendedDescription": "Denji es un joven que vive en la pobreza extrema, cazando demonios para pagar las deudas de su padre fallecido a la yakuza. Su única compañía es Pochita, un demonio-perro con una motosierra en la cabeza. Cuando Denji es traicionado y asesinado, Pochita se sacrifica para fusionarse con él, convirtiéndolo en Chainsaw Man. Ahora con poderes demoníacos, Denji es reclutado por la organización de cazadores de demonios del gobierno. Este primer volumen marca el inicio de una historia brutal, emotiva y sorprendentemente profunda sobre un joven que solo quiere vivir una vida normal.",
         "popularity": 98,
-        "releaseDate": "2024-11-28"
+        "releaseDate": "2024-11-28",
+        "stock": 12,
+        "specifications": {
+            "publisher": "Ivrea",
+            "author": "Tatsuki Fujimoto",
+            "pages": "200",
+            "language": "Español",
+            "isbn": "978-987-783-456-7",
+            "dimensions": "13 x 18 cm"
+        },
+        "relatedProducts": [
+            3,
+            4,
+            5
+        ]
     },
     {
         "precio": 990,
         "id": 3,
         "title": "CHAINSAW MAN #02",
         "thumbnailUrl": "./assets/img/chainsaw-man-2.jpg",
+        "esNovedad": false,
+        "enOferta": false,
         "description": "Denji se une a los cazadores de demonios oficiales. Más acción y revelaciones impactantes.",
         "popularity": 92,
         "releaseDate": "2024-10-15"
@@ -35,8 +82,11 @@
         "id": 4,
         "title": "CHAINSAW MAN #04",
         "thumbnailUrl": "./assets/img/chainsaw-man-4.jpg",
+        "esNovedad": false,
+        "enOferta": true,
         "discount": 15,
         "originalPrice": 1165,
+        "precioOriginal": 1165,
         "description": "La batalla contra el demonio de la eternidad. Tensión y horror en cada página.",
         "popularity": 88,
         "releaseDate": "2024-09-20"
@@ -46,6 +96,8 @@
         "id": 5,
         "title": "CHAINSAW MAN #05",
         "thumbnailUrl": "./assets/img/chainsaw-man-5.jpg",
+        "esNovedad": false,
+        "enOferta": false,
         "description": "Nuevos enemigos aparecen. Denji enfrenta sus desafíos más difíciles hasta ahora.",
         "popularity": 85,
         "releaseDate": "2024-08-10"
@@ -55,17 +107,43 @@
         "id": 6,
         "title": "HAIKYU!! #01",
         "thumbnailUrl": "./assets/img/haikyu-01.jpg",
+        "images": [
+            "./assets/img/haikyu-01.jpg",
+            "./assets/img/haikyu-01.jpg",
+            "./assets/img/haikyu-01.jpg"
+        ],
+        "esNovedad": false,
+        "enOferta": true,
         "discount": 25,
         "originalPrice": 1320,
+        "precioOriginal": 1320,
         "description": "Hinata Shoyo sueña con ser un gran jugador de voleibol a pesar de su baja estatura. ¡El comienzo de una aventura deportiva!",
+        "extendedDescription": "Hinata Shoyo, un estudiante de secundaria de baja estatura, se enamora del voleibol después de ver un partido del 'Pequeño Gigante'. A pesar de su altura, Hinata está determinado a convertirse en un gran jugador. Después de formar un equipo improvisado en su escuela, finalmente llega a enfrentarse contra el genio del voleibol, Tobio Kageyama, en su primer y último torneo de secundaria. Aunque pierde, Hinata jura vengarse y ambos terminan en la misma preparatoria. Este es el inicio de una de las historias deportivas más inspiradoras del manga.",
         "popularity": 90,
-        "releaseDate": "2024-07-05"
+        "releaseDate": "2024-07-05",
+        "stock": 6,
+        "specifications": {
+            "publisher": "Ivrea",
+            "author": "Haruichi Furudate",
+            "pages": "192",
+            "language": "Español",
+            "isbn": "978-987-783-123-4",
+            "dimensions": "13 x 18 cm"
+        },
+        "relatedProducts": [
+            11,
+            14,
+            18
+        ]
     },
     {
         "precio": 990,
         "id": 7,
         "title": "TOKYO REVENGERS #01",
         "thumbnailUrl": "./assets/img/tokyo-revengers-1.jpg",
+        "isNew": true,
+        "esNovedad": true,
+        "enOferta": false,
         "description": "El primer volumen de la saga de viajes en el tiempo. Takemichi descubre su poder.",
         "popularity": 93,
         "releaseDate": "2024-11-15"
@@ -75,8 +153,11 @@
         "id": 8,
         "title": "CHAINSAW MAN #07",
         "thumbnailUrl": "./assets/img/chainsaw-man-7.jpg",
+        "esNovedad": false,
+        "enOferta": true,
         "discount": 30,
         "originalPrice": 1414,
+        "precioOriginal": 1414,
         "description": "¡OFERTA ESPECIAL! Continúa la saga con este volumen a precio increíble.",
         "popularity": 80,
         "releaseDate": "2024-06-12"
@@ -86,6 +167,8 @@
         "id": 9,
         "title": "CHAINSAW MAN #06",
         "thumbnailUrl": "./assets/img/chainsaw-man-6.jpg",
+        "esNovedad": false,
+        "enOferta": false,
         "description": "El arco de Katana Man. Acción intensa y giros inesperados.",
         "popularity": 82,
         "releaseDate": "2024-07-18"
@@ -95,6 +178,8 @@
         "id": 10,
         "title": "CHAINSAW MAN #08",
         "thumbnailUrl": "./assets/img/chainsaw-man-8.jpg",
+        "esNovedad": false,
+        "enOferta": false,
         "description": "La historia se intensifica con nuevos demonios y aliados inesperados.",
         "popularity": 78,
         "releaseDate": "2024-05-22"
@@ -104,8 +189,11 @@
         "id": 11,
         "title": "HAIKYU!! #02",
         "thumbnailUrl": "./assets/img/haikyu-02.jpg",
+        "esNovedad": false,
+        "enOferta": true,
         "discount": 10,
         "originalPrice": 1100,
+        "precioOriginal": 1100,
         "description": "Hinata y Kageyama forman un dúo imparable. ¡El trabajo en equipo es la clave!",
         "popularity": 87,
         "releaseDate": "2024-06-28"
@@ -115,6 +203,8 @@
         "id": 12,
         "title": "CHAINSAW MAN #09",
         "thumbnailUrl": "./assets/img/chainsaw-man-9.jpg",
+        "esNovedad": false,
+        "enOferta": false,
         "description": "Revelaciones impactantes sobre el pasado de Denji y su conexión con Makima.",
         "popularity": 75,
         "releaseDate": "2024-04-15"
@@ -124,8 +214,11 @@
         "id": 13,
         "title": "JUJUTSU KAISEN #00",
         "thumbnailUrl": "./assets/img/jujutsu-kaisen-00.webp",
+        "esNovedad": false,
+        "enOferta": true,
         "discount": 15,
         "originalPrice": 1294,
+        "precioOriginal": 1294,
         "description": "La precuela de Jujutsu Kaisen. Descubre el pasado de Yuta Okkotsu y su maldición.",
         "popularity": 96,
         "releaseDate": "2024-10-30"
@@ -135,6 +228,8 @@
         "id": 14,
         "title": "HAIKYU!! #03",
         "thumbnailUrl": "./assets/img/haikyu-03.jpg",
+        "esNovedad": false,
+        "enOferta": false,
         "description": "El equipo de Karasuno se prepara para su primer torneo oficial.",
         "popularity": 84,
         "releaseDate": "2024-05-10"
@@ -144,6 +239,8 @@
         "id": 15,
         "title": "CHAINSAW MAN #10",
         "thumbnailUrl": "./assets/img/chainsaw-man-10.jpg",
+        "esNovedad": false,
+        "enOferta": false,
         "description": "El clímax del primer arco. Batallas épicas y sacrificios heroicos.",
         "popularity": 72,
         "releaseDate": "2024-03-20"
@@ -153,6 +250,8 @@
         "id": 16,
         "title": "JUJUTSU KAISEN #03",
         "thumbnailUrl": "./assets/img/jujutsu-kaisen-03.jpg",
+        "esNovedad": false,
+        "enOferta": false,
         "description": "Yuji enfrenta maldiciones cada vez más poderosas mientras aprende a controlar su poder.",
         "popularity": 91,
         "releaseDate": "2024-09-05"
@@ -162,8 +261,11 @@
         "id": 17,
         "title": "JUJUTSU KAISEN #02",
         "thumbnailUrl": "./assets/img/jujutsu-kaisen-02.webp",
+        "esNovedad": false,
+        "enOferta": true,
         "discount": 20,
         "originalPrice": 1375,
+        "precioOriginal": 1375,
         "description": "Yuji Itadori continúa su entrenamiento como hechicero. Nuevos aliados y enemigos aparecen.",
         "popularity": 94,
         "releaseDate": "2024-10-08"
@@ -173,6 +275,8 @@
         "id": 18,
         "title": "HAIKYU!! #05",
         "thumbnailUrl": "./assets/img/haikyu-05.jpg",
+        "esNovedad": false,
+        "enOferta": false,
         "description": "El partido contra Aoba Johsai. Tensión y emoción en cada jugada.",
         "popularity": 81,
         "releaseDate": "2024-04-02"
@@ -182,17 +286,43 @@
         "id": 19,
         "title": "JUJUTSU KAISEN #01",
         "thumbnailUrl": "./assets/img/jujutsu-kaisen-01.jpg",
+        "images": [
+            "./assets/img/jujutsu-kaisen-01.jpg",
+            "./assets/img/jujutsu-kaisen-01.jpg",
+            "./assets/img/jujutsu-kaisen-01.jpg"
+        ],
+        "isNew": true,
+        "esNovedad": true,
+        "enOferta": false,
         "description": "El inicio de la saga de hechicería. Yuji Itadori se convierte en el recipiente de Sukuna.",
+        "extendedDescription": "Yuji Itadori es un estudiante de secundaria con habilidades físicas extraordinarias. Cuando su club de ocultismo abre accidentalmente un objeto maldito, Yuji se ve obligado a tragarse un dedo de Sukuna, el Rey de las Maldiciones, para salvar a sus amigos. Milagrosamente, Yuji puede controlar el poder de Sukuna y es reclutado por el Instituto Técnico de Hechicería de Tokio. Así comienza su viaje en el mundo oculto de las maldiciones, los hechiceros y las batallas sobrenaturales. Este primer volumen establece las bases de una de las series shonen más populares de la actualidad.",
         "popularity": 100,
-        "releaseDate": "2024-11-01"
+        "releaseDate": "2024-11-01",
+        "stock": 15,
+        "specifications": {
+            "publisher": "Ivrea",
+            "author": "Gege Akutami",
+            "pages": "192",
+            "language": "Español",
+            "isbn": "978-987-783-890-1",
+            "dimensions": "13 x 18 cm"
+        },
+        "relatedProducts": [
+            17,
+            16,
+            13
+        ]
     },
     {
         "precio": 1500,
         "id": 20,
         "title": "CLASSROOM OF THE ELITE #01",
         "thumbnailUrl": "./assets/img/clasrroom-of-the-elite-1.webp",
+        "esNovedad": false,
+        "enOferta": true,
         "discount": 10,
         "originalPrice": 1667,
+        "precioOriginal": 1667,
         "description": "En una academia de élite, Ayanokoji Kiyotaka oculta su verdadero potencial. Estrategia, intriga y competencia.",
         "popularity": 89,
         "releaseDate": "2024-08-25"

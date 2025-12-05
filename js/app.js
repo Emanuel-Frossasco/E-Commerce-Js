@@ -48,10 +48,20 @@ const fetchData = async () => {
         const res = await fetch("productos.json");
         const data = await res.json();
         todosLosProductos = data;
-        productosFiltrados = data;
+
+        // HOMEPAGE: Filter to show only new releases and special offers
+        const novedades = data.filter(p => p.esNovedad === true);
+        const ofertas = data.filter(p => p.enOferta === true);
+
+        // Combine and remove duplicates (products that are both new and on sale)
+        const productosDestacados = [...novedades, ...ofertas].filter((producto, index, self) =>
+            index === self.findIndex(p => p.id === producto.id)
+        );
+
+        productosFiltrados = productosDestacados;
         const categorias = extraerCategorias(data);
         pintarFiltros(categorias);
-        pintarProductos(data);
+        pintarProductos(productosDestacados);
         eventoBotones(data);
     } catch (error) {
         console.log(error);
@@ -72,6 +82,11 @@ const extraerCategorias = (data) => {
 };
 
 const pintarFiltros = (categorias) => {
+    // Skip filter generation if the container doesn't exist (e.g., on homepage)
+    if (!filtrosBotones) {
+        return;
+    }
+
     const fragment = document.createDocumentFragment();
     const btnTodos = document.createElement('button');
     btnTodos.className = 'btn-filtro active';
@@ -265,15 +280,42 @@ const eventoBotones = (data) => {
         });
     });
 
-    // Quick View buttons
+    // Quick View buttons - now navigate to product detail page
     const btnQuickView = document.querySelectorAll(".btn-quick-view");
     btnQuickView.forEach((btn) => {
         btn.addEventListener("click", () => {
-            const [producto] = data.filter(
-                (item) => item.id === parseInt(btn.dataset.id)
-            );
-            mostrarQuickView(producto);
+            const productId = parseInt(btn.dataset.id);
+            window.location.href = `producto.html?id=${productId}`;
         });
+    });
+
+    // Make product images and titles clickable to go to detail page
+    const productCards = document.querySelectorAll(".card");
+    productCards.forEach((card) => {
+        const img = card.querySelector(".card-img-top");
+        const title = card.querySelector(".card-title");
+
+        if (img) {
+            img.style.cursor = "pointer";
+            img.addEventListener("click", () => {
+                const addCartBtn = card.querySelector(".btn-add-cart");
+                if (addCartBtn) {
+                    const productId = parseInt(addCartBtn.dataset.id);
+                    window.location.href = `producto.html?id=${productId}`;
+                }
+            });
+        }
+
+        if (title) {
+            title.style.cursor = "pointer";
+            title.addEventListener("click", () => {
+                const addCartBtn = card.querySelector(".btn-add-cart");
+                if (addCartBtn) {
+                    const productId = parseInt(addCartBtn.dataset.id);
+                    window.location.href = `producto.html?id=${productId}`;
+                }
+            });
+        }
     });
 };
 
@@ -604,63 +646,6 @@ const initCarousel = () => {
     carouselContainer.addEventListener('mouseenter', stopAutoSlide);
     carouselContainer.addEventListener('mouseleave', startAutoSlide);
     startAutoSlide();
-};
-
-const mostrarQuickView = (producto) => {
-    document.getElementById('quick-view-img').src = producto.thumbnailUrl;
-    document.getElementById('quick-view-title').textContent = producto.title;
-    document.getElementById('quick-view-description').textContent = producto.description || 'Descripción no disponible';
-    const badgesContainer = document.getElementById('quick-view-badges');
-    badgesContainer.innerHTML = '';
-    if (producto.isNew) {
-        const badgeNew = document.createElement('span');
-        badgeNew.className = 'badge-new';
-        badgeNew.textContent = 'NUEVO';
-        badgesContainer.appendChild(badgeNew);
-    }
-    if (producto.discount) {
-        const badgeDiscount = document.createElement('span');
-        badgeDiscount.className = 'badge-discount';
-        badgeDiscount.textContent = `-${producto.discount}%`;
-        badgesContainer.appendChild(badgeDiscount);
-    }
-    const originalPriceEl = document.getElementById('quick-view-original-price');
-    const originalPriceValue = document.getElementById('quick-view-original-price-value');
-    const currentPriceValue = document.getElementById('quick-view-current-price-value');
-
-    if (producto.discount && producto.originalPrice) {
-        originalPriceEl.style.display = 'block';
-        originalPriceValue.textContent = producto.originalPrice;
-    } else {
-        originalPriceEl.style.display = 'none';
-    }
-    currentPriceValue.textContent = producto.precio;
-    const btnAddToCart = document.getElementById('btn-add-to-cart-quick');
-    btnAddToCart.onclick = () => {
-        const productoCarrito = {
-            id: producto.id,
-            title: producto.title,
-            precio: producto.precio,
-            thumbnailUrl: producto.thumbnailUrl,
-            cantidad: 1,
-            precioTotal: producto.precio,
-        };
-        const index = carrito.findIndex((item) => item.id === productoCarrito.id);
-        if (index === -1) {
-            carrito.push(productoCarrito);
-        } else {
-            carrito[index].cantidad++;
-            carrito[index].precioTotal = carrito[index].cantidad * carrito[index].precio;
-        }
-        renderCartSidebar();
-        guardarCarrito();
-        actualizarContadorCarrito();
-        mostrarNotificacion(`${producto.title} agregado al carrito`, "success", producto.thumbnailUrl);
-        const modal = bootstrap.Modal.getInstance(document.getElementById('modal-quick-view'));
-        modal.hide();
-    };
-    const modal = new bootstrap.Modal(document.getElementById('modal-quick-view'));
-    modal.show();
 };
 
 // ===== MOBILE SIDEBAR FUNCTIONALITY =====

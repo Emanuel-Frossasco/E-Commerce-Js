@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--SEO-->
+    <meta name="description" content="Detalles del producto - Manga Store">
+    <meta name="keywords" content="MANGA, COMPRAR MANGA, TIENDA MANGA, MANGA EN ESPAÑOL">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="">
+    <meta property="twitter:title" content="">
+    <meta property="twitter:description" content="">
+    <meta property="twitter:image" content="">
+
+    <!--Alerts-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!--icons-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!--Icono de la marca-->
+    <link rel="shortcut icon" href="./assets/icons/favicon.ico" type="image/x-icon">
+    <!--Hoja de Estilos de manera externa-->
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Producto - Manga Store</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navegacion">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                Manga Store
+            </a>
+
+            <!-- Hamburger Menu Button for Mobile -->
+            <button class="btn-hamburger" id="btn-hamburger" aria-label="Menú">
+                <i class='bx bx-menu'></i>
+            </button>
+
+            <div class="navbar-content d-flex align-items-center gap-3">
+                <div class="search-container">
+                    <input class="form-control search-input" type="search" id="search-input"
+                        placeholder="Buscar manga..." aria-label="Search">
+                    <i class='bx bx-search search-icon'></i>
+                </div>
+            </div>
+
+            <!-- Cart Icon - Always visible -->
+            <button class="cart-icon-btn" id="open-cart" aria-label="Abrir carrito">
+                <i class='bx bx-cart'></i>
+                <span class="cart-badge" id="cart-badge">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-sidebar" id="mobile-sidebar">
+        <div class="mobile-sidebar-header">
+            <h3>Menú</h3>
+            <button class="btn-close-sidebar" id="btn-close-sidebar" aria-label="Cerrar menú">
+                <i class='bx bx-x'></i>
+            </button>
+        </div>
+
+        <div class="mobile-sidebar-content">
+            <!-- Search in mobile -->
+            <div class="mobile-search">
+                <input class="form-control" type="search" id="mobile-search-input" placeholder="Buscar manga..."
+                    aria-label="Search">
+                <i class='bx bx-search'></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div class="mobile-sidebar-overlay" id="mobile-sidebar-overlay"></div>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="container mt-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb" id="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html"><i class='bx bx-home'></i> Inicio</a></li>
+                <li class="breadcrumb-item"><a href="productos.html">Catálogo</a></li>
+                <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-product">Cargando...</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Product Detail Section -->
+    <div class="container product-detail-container">
+        <div class="row">
+            <!-- Image Gallery -->
+            <div class="col-md-6">
+                <div class="product-gallery">
+                    <div class="main-image-container">
+                        <img src="" alt="" id="main-product-image" class="main-product-image">
+                        <div class="product-badges-detail" id="product-badges-detail">
+                            <!-- Badges will be inserted here -->
+                        </div>
+                    </div>
+                    <div class="thumbnail-gallery" id="thumbnail-gallery">
+                        <!-- Thumbnails will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Information -->
+            <div class="col-md-6">
+                <div class="product-info">
+                    <h1 class="product-title" id="product-title">Cargando...</h1>
+
+                    <div class="product-rating" id="product-rating">
+                        <div class="stars">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star-half'></i>
+                        </div>
+                        <span class="rating-text">4.5 (128 reseñas)</span>
+                    </div>
+
+                    <div class="product-price-section">
+                        <div class="price-container-detail">
+                            <p class="original-price-detail" id="original-price-detail" style="display: none;">
+                                $<span id="original-price-value-detail"></span>
+                            </p>
+                            <p class="current-price-detail">
+                                $<span id="current-price-value-detail">0</span>
+                            </p>
+                        </div>
+                        <div class="stock-status" id="stock-status">
+                            <i class='bx bx-check-circle'></i>
+                            <span>En stock</span>
+                        </div>
+                    </div>
+
+                    <div class="product-description">
+                        <h3>Descripción</h3>
+                        <p id="product-description">Cargando descripción...</p>
+                    </div>
+
+                    <div class="product-specifications">
+                        <h3>Especificaciones</h3>
+                        <table class="specs-table">
+                            <tbody id="specs-tbody">
+                                <!-- Specifications will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="quantity">Cantidad:</label>
+                            <div class="quantity-controls">
+                                <button class="btn-quantity" id="btn-decrease-quantity" aria-label="Disminuir cantidad">
+                                    <i class='bx bx-minus'></i>
+                                </button>
+                                <input type="number" id="quantity" value="1" min="1" max="10" readonly>
+                                <button class="btn-quantity" id="btn-increase-quantity" aria-label="Aumentar cantidad">
+                                    <i class='bx bx-plus'></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button class="btn-add-to-cart-detail" id="btn-add-to-cart-detail">
+                            <i class='bx bx-cart'></i>
+                            Agregar al Carrito
+                        </button>
+
+                        <button class="btn-wishlist-detail" id="btn-wishlist-detail">
+                            <i class='bx bx-heart'></i>
+                        </button>
+                    </div>
+
+                    <div class="social-share">
+                        <h4>Compartir:</h4>
+                        <div class="share-buttons">
+                            <button class="share-btn share-facebook" id="share-facebook"
+                                aria-label="Compartir en Facebook">
+                                <i class='bx bxl-facebook'></i>
+                            </button>
+                            <button class="share-btn share-twitter" id="share-twitter"
+                                aria-label="Compartir en Twitter">
+                                <i class='bx bxl-twitter'></i>
+                            </button>
+                            <button class="share-btn share-whatsapp" id="share-whatsapp"
+                                aria-label="Compartir en WhatsApp">
+                                <i class='bx bxl-whatsapp'></i>
+                            </button>
+                            <button class="share-btn share-link" id="share-link" aria-label="Copiar enlace">
+                                <i class='bx bx-link'></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products Section -->
+        <div class="related-products-section mt-5">
+            <h2>Productos Relacionados</h2>
+            <div class="row" id="related-products">
+                <!-- Related products will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <!-- Sidebar Cart -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <!-- Cart Header -->
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-cart" id="close-cart" aria-label="Cerrar carrito">
+                <i class='bx bx-x'></i>
+            </button>
+        </div>
+
+        <!-- Cart Items Container -->
+        <div class="cart-items-container" id="cart-items-container">
+            <div class="cart-empty" id="cart-empty">
+                <i class='bx bx-cart'></i>
+                <p>Tu carrito está vacío</p>
+                <small>¡Agrega algunos mangas!</small>
+            </div>
+            <div class="cart-items" id="cart-items">
+                <!-- Cart items will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Cart Footer -->
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal:</span>
+                <span class="subtotal-amount" id="subtotal-amount">$0</span>
+            </div>
+            <button class="btn-checkout" id="btn-checkout">
+                <i class='bx bx-check-circle'></i>
+                Proceder al Checkout
+            </button>
+            <button class="btn-clear-cart" id="btn-clear-cart">
+                <i class='bx bx-trash'></i>
+                Vaciar Carrito
+            </button>
+        </div>
+    </div>
+
+    <!-- Template for Cart Items -->
+    <template id="template-cart-item">
+        <div class="cart-item">
+            <img src="" alt="" class="cart-item-img">
+            <div class="cart-item-info">
+                <h4 class="cart-item-title"></h4>
+                <p class="cart-item-price">$<span class="item-price"></span></p>
+                <div class="cart-item-controls">
+                    <button class="btn-cart-decrease" aria-label="Disminuir cantidad">
+                        <i class='bx bx-minus'></i>
+                    </button>
+                    <span class="cart-item-quantity">1</span>
+                    <button class="btn-cart-increase" aria-label="Aumentar cantidad">
+                        <i class='bx bx-plus'></i>
+                    </button>
+                    <button class="btn-cart-remove" aria-label="Eliminar producto">
+                        <i class='bx bx-trash'></i>
+                    </button>
+                </div>
+                <p class="cart-item-total">Total: $<span class="item-total"></span></p>
+            </div>
+        </div>
+    </template>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <!-- About Section -->
+                <div class="footer-section">
+                    <h3>Manga Store</h3>
+                    <p>Tu tienda online de confianza para los mejores mangas. Encuentra las últimas novedades y clásicos
+                        imprescindibles.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <i class='bx bxl-facebook'></i>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <i class='bx bxl-instagram'></i>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <i class='bx bxl-twitter'></i>
+                        </a>
+                        <a href="#" aria-label="Discord">
+                            <i class='bx bxl-discord'></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class='bx bx-chevron-right'></i>Inicio</a></li>
+                        <li><a href="productos.html"><i class='bx bx-chevron-right'></i>Catálogo</a></li>
+                        <li><a href="index.html#novedades"><i class='bx bx-chevron-right'></i>Novedades</a></li>
+                        <li><a href="sobre-nosotros.html"><i class='bx bx-chevron-right'></i>Sobre Nosotros</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="footer-section">
+                    <h3>Atención al Cliente</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class='bx bx-chevron-right'></i>Preguntas Frecuentes</a></li>
+                        <li><a href="#"><i class='bx bx-chevron-right'></i>Envíos y Devoluciones</a></li>
+                        <li><a href="#"><i class='bx bx-chevron-right'></i>Términos y Condiciones</a></li>
+                        <li><a href="#"><i class='bx bx-chevron-right'></i>Política de Privacidad</a></li>
+                        <li><a href="#"><i class='bx bx-chevron-right'></i>Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class='bx bx-map'></i>
+                            <span>Buenos Aires, Argentina</span>
+                        </li>
+                        <li>
+                            <i class='bx bx-envelope'></i>
+                            <span>info@mangastore.com</span>
+                        </li>
+                        <li>
+                            <i class='bx bx-phone'></i>
+                            <span>+54 11 1234-5678</span>
+                        </li>
+                        <li>
+                            <i class='bx bx-time'></i>
+                            <span>Lun - Vie: 9:00 - 18:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 Manga Store. Desarrollado por <a href="#">Emanuel Frossasco</a>. Todos los derechos
+                    reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <!-- Toastify JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- Product Detail JS -->
+    <script src="js/producto.js"></script>
+</body>
+
+</html>

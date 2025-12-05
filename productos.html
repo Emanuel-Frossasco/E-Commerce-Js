@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--SEO-->
+    <meta name="description" content="Catálogo completo de mangas - Encuentra todos nuestros títulos disponibles">
+    <meta name="keywords" content="MANGA, CATALOGO MANGA, COMPRAR MANGA, MANGA ONLINE, MANGA ESPAÑOL">
+    <!--Alerts-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!--icons-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!--Animaciones-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!--Icono de la marca-->
+    <link rel="shortcut icon" href="./assets/icons/favicon.ico" type="image/x-icon">
+    <!--Hoja de Estilos de manera externa-->
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Catálogo - Manga Store</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navegacion">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                Manga Store
+            </a>
+
+            <!-- Hamburger Menu Button for Mobile -->
+            <button class="btn-hamburger" id="btn-hamburger" aria-label="Menú">
+                <i class='bx bx-menu'></i>
+            </button>
+
+            <div class="navbar-content d-flex align-items-center gap-3">
+                <div class="search-container">
+                    <input class="form-control search-input" type="search" id="search-input"
+                        placeholder="Buscar manga..." aria-label="Search">
+                    <i class='bx bx-search search-icon'></i>
+                </div>
+            </div>
+
+            <!-- Cart Icon - Always visible -->
+            <button class="cart-icon-btn" id="open-cart" aria-label="Abrir carrito">
+                <i class='bx bx-cart'></i>
+                <span class="cart-badge" id="cart-badge">0</span>
+            </button>
+        </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-sidebar" id="mobile-sidebar">
+        <div class="mobile-sidebar-header">
+            <h3>Menú</h3>
+            <button class="btn-close-sidebar" id="btn-close-sidebar" aria-label="Cerrar menú">
+                <i class='bx bx-x'></i>
+            </button>
+        </div>
+
+        <div class="mobile-sidebar-content">
+            <!-- Search in mobile -->
+            <div class="mobile-search">
+                <input class="form-control" type="search" id="mobile-search-input" placeholder="Buscar manga..."
+                    aria-label="Search">
+                <i class='bx bx-search'></i>
+            </div>
+
+            <!-- Categories -->
+            <div class="mobile-categories">
+                <h4>Categorías</h4>
+                <div id="mobile-filtros-botones">
+                    <!-- Los botones se generan dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Sort -->
+            <div class="mobile-sort">
+                <h4>Ordenar por</h4>
+                <select id="mobile-sort-select" class="form-control">
+                    <option value="default">Predeterminado</option>
+                    <option value="price-asc">Precio: Menor a Mayor</option>
+                    <option value="price-desc">Precio: Mayor a Menor</option>
+                    <option value="popularity">Popularidad</option>
+                    <option value="release-date">Fecha de Lanzamiento</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div class="mobile-sidebar-overlay" id="mobile-sidebar-overlay"></div>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1><i class='bx bx-book-open'></i> Catálogo Completo</h1>
+            <p>Explora todos nuestros mangas disponibles</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Categories Filter Section -->
+        <div class="product-categories-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <h5 class="categories-title">
+                <i class='bx bx-category'></i> Categorías:
+            </h5>
+            <div class="categories-buttons" id="filtros-botones">
+                <!-- Los botones se generan dinámicamente -->
+            </div>
+        </div>
+
+        <!-- Ordenar productos -->
+        <div class="sort-container my-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+            <label for="sort-select" class="sort-label">
+                <i class='bx bx-sort'></i> Ordenar por:
+            </label>
+            <select id="sort-select" class="sort-select">
+                <option value="default">Predeterminado</option>
+                <option value="price-asc">Precio: Menor a Mayor</option>
+                <option value="price-desc">Precio: Mayor a Menor</option>
+                <option value="popularity">Popularidad</option>
+                <option value="release-date">Fecha de Lanzamiento</option>
+            </select>
+        </div>
+
+        <!-- Mensaje cuando no hay resultados -->
+        <div class="no-results" id="no-results" style="display: none;">
+            <i class='bx bx-search-alt-2'></i>
+            <p>No se encontraron productos</p>
+        </div>
+
+        <!-- Template de producto (fuera del contenedor para que no se borre) -->
+        <template id="template-producto">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+                <div class="card">
+                    <!-- Badges Container -->
+                    <div class="product-badges">
+                        <span class="badge-new" style="display: none;">NUEVO</span>
+                        <span class="badge-discount" style="display: none;"></span>
+                    </div>
+                    <img src="" alt="" class="card-img-top" />
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <div class="price-container">
+                            <p class="original-price" style="display: none;">$<span class="original-price-value"></span>
+                            </p>
+                            <p class="card-text current-price">$ <span class="current-price-value"></span></p>
+                        </div>
+                        <div class="card-buttons">
+                            <button class="btn btn-dark btn-add-cart" title="Agregar al carrito">
+                                <i class='bx bx-cart-add'></i>
+                            </button>
+                            <button class="btn btn-quick-view" title="Vista rápida">
+                                <i class='bx bx-show'></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <div class="row my-5" id="lista-productos">
+            <!-- Los productos se insertan aquí dinámicamente -->
+        </div>
+
+    </div>
+
+    <template id="template-footer">
+        <th scope="row" colspan="2" class="total-prodcutos">Total productos</th>
+        <td></td>
+        <td>
+            <button class="btn btn-danger btn-sm" id="vaciar-carrito">
+                <i class='bx bxs-trash-alt'></i>
+            </button>
+            <button class="btn btn-info btn-sm" id="compar-carrito">
+                <i class='bx bx-cart-download'></i>
+            </button>
+        </td>
+        <td class="font-weight-bold">$<span></span></td>
+    </template>
+
+    <template id="template-carrito">
+        <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td>
+                <button class="btn btn-info btn-sm btn-aumentar">
+                    <i class='bx bxs-chevron-up'></i>
+                </button>
+                <button class="btn btn-danger btn-sm btn-disminuir">
+                    <i class='bx bxs-chevron-down'></i>
+                </button>
+                <button class="btn btn-danger btn-sm btn-eliminar">
+                    <i class='bx bxs-trash-alt'></i>
+            </td>
+            <td></td>
+        </tr>
+    </template>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <!-- Sidebar Cart -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <!-- Cart Header -->
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-cart" id="close-cart" aria-label="Cerrar carrito">
+                <i class='bx bx-x'></i>
+            </button>
+        </div>
+
+        <!-- Cart Items Container -->
+        <div class="cart-items-container" id="cart-items-container">
+            <div class="cart-empty" id="cart-empty">
+                <i class='bx bx-cart'></i>
+                <p>Tu carrito está vacío</p>
+                <small>¡Agrega algunos mangas!</small>
+            </div>
+            <div class="cart-items" id="cart-items">
+                <!-- Cart items will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Cart Footer -->
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal:</span>
+                <span class="subtotal-amount" id="subtotal-amount">$0</span>
+            </div>
+            <button class="btn-checkout" id="btn-checkout">
+                <i class='bx bx-check-circle'></i>
+                Proceder al Checkout
+            </button>
+            <button class="btn-clear-cart" id="btn-clear-cart">
+                <i class='bx bx-trash'></i>
+                Vaciar Carrito
+            </button>
+        </div>
+    </div>
+
+    <!-- Template for Cart Items -->
+    <template id="template-cart-item">
+        <div class="cart-item">
+            <img src="" alt="" class="cart-item-img">
+            <div class="cart-item-info">
+                <h4 class="cart-item-title"></h4>
+                <p class="cart-item-price">$<span class="item-price"></span></p>
+                <div class="cart-item-controls">
+                    <button class="btn-cart-decrease" aria-label="Disminuir cantidad">
+                        <i class='bx bx-minus'></i>
+                    </button>
+                    <span class="cart-item-quantity">1</span>
+                    <button class="btn-cart-increase" aria-label="Aumentar cantidad">
+                        <i class='bx bx-plus'></i>
+                    </button>
+                    <button class="btn-cart-remove" aria-label="Eliminar producto">
+                        <i class='bx bx-trash'></i>
+                    </button>
+                </div>
+                <p class="cart-item-total">Total: $<span class="item-total"></span></p>
+            </div>
+        </div>
+    </template>
+
+    <!-- Template para resumen de checkout -->
+    <template id="template-checkout-item">
+        <div class="checkout-item">
+            <span class="checkout-item-title"></span>
+            <span class="checkout-item-quantity"></span>
+            <span class="checkout-item-price"></span>
+        </div>
+    </template>
+
+    <!-- Panel de resumen FUERA del modal -->
+    <div id="checkout-summary-panel"
+        style="position: fixed; top: 80px; right: 20px; width: 350px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); z-index: 9999; display: none;">
+        <h6 style="margin-bottom: 1rem; color: #2c3e50; font-weight: 700;">
+            <i class='bx bx-receipt' style="color: #43ed00; font-size: 1.5rem;"></i> Resumen de tu pedido
+        </h6>
+        <div id="resumen-compra"></div>
+    </div>
+
+    <!-- Modal Checkout -->
+    <div class="modal fade" id="modal-checkout" tabindex="-1" aria-labelledby="modalCheckoutLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCheckoutLabel">
+                        <i class='bx bx-shopping-bag'></i> Finalizar Compra
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario de checkout -->
+                    <form id="checkout-form" novalidate>
+                        <!-- Información Personal -->
+                        <div class="checkout-section">
+                            <h6><i class='bx bx-user'></i> Información Personal</h6>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="checkout-name" class="form-label">Nombre completo *</label>
+                                    <input type="text" class="form-control" id="checkout-name" required>
+                                    <div class="invalid-feedback">
+                                        Por favor ingresa tu nombre completo
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="checkout-email" class="form-label">Email *</label>
+                                    <input type="email" class="form-control" id="checkout-email" required>
+                                    <div class="invalid-feedback">
+                                        Por favor ingresa un email válido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="checkout-phone" class="form-label">Teléfono *</label>
+                                    <input type="tel" class="form-control" id="checkout-phone" required>
+                                    <div class="invalid-feedback">
+                                        Por favor ingresa tu teléfono
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="checkout-dni" class="form-label">DNI *</label>
+                                    <input type="text" class="form-control" id="checkout-dni" required>
+                                    <div class="invalid-feedback">
+                                        Por favor ingresa tu DNI
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dirección de Envío -->
+                        <div class="checkout-section">
+                            <h6><i class='bx bx-map'></i> Dirección de Envío</h6>
+                            <div class="row">
+                                <div class="col-md-8 mb-3">
+                                    <label for="checkout-address" class="form-label">Dirección *</label>
+                                    <input type="text" class="form-control" id="checkout-address" required>
+                                    <div class="invalid-feedback">
+                                        Por favor ingresa tu dirección
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="checkout-number" class="form-label">Número *</label>
+                                    <input type="text" class="form-control" id="checkout-number" required>
+                                    <div class="invalid-feedback">
+                                        Número requerido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="checkout-city" class="form-label">Ciudad *</label>
+                                    <input type="text" class="form-control" id="checkout-city" required>
+                                    <div class="invalid-feedback">
+                                        Por favor ingresa tu ciudad
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="checkout-province" class="form-label">Provincia *</label>
+                                    <input type="text" class="form-control" id="checkout-province" required>
+                                    <div class="invalid-feedback">
+                                        Por favor ingresa tu provincia
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="checkout-postal" class="form-label">Código Postal *</label>
+                                    <input type="text" class="form-control" id="checkout-postal" required>
+                                    <div class="invalid-feedback">
+                                        Código postal requerido
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Método de Pago -->
+                        <div class="checkout-section">
+                            <h6><i class='bx bx-credit-card'></i> Método de Pago</h6>
+                            <div class="payment-methods">
+                                <div class="form-check payment-option">
+                                    <input class="form-check-input" type="radio" name="payment-method"
+                                        id="payment-credit" value="credit" required>
+                                    <label class="form-check-label" for="payment-credit">
+                                        <i class='bx bx-credit-card'></i> Tarjeta de Crédito/Débito
+                                    </label>
+                                </div>
+                                <div class="form-check payment-option">
+                                    <input class="form-check-input" type="radio" name="payment-method"
+                                        id="payment-transfer" value="transfer">
+                                    <label class="form-check-label" for="payment-transfer">
+                                        <i class='bx bx-transfer'></i> Transferencia Bancaria
+                                    </label>
+                                </div>
+                                <div class="form-check payment-option">
+                                    <input class="form-check-input" type="radio" name="payment-method" id="payment-cash"
+                                        value="cash">
+                                    <label class="form-check-label" for="payment-cash">
+                                        <i class='bx bx-money'></i> Efectivo (Pago contra entrega)
+                                    </label>
+                                </div>
+                                <div class="invalid-feedback d-block" id="payment-error"
+                                    style="display: none !important;">
+                                    Por favor selecciona un método de pago
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notas adicionales -->
+                        <div class="checkout-section">
+                            <label for="checkout-notes" class="form-label">Notas adicionales (opcional)</label>
+                            <textarea class="form-control" id="checkout-notes" rows="3"
+                                placeholder="Ej: Dejar en portería, llamar al llegar, etc."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class='bx bx-x'></i> Cancelar
+                    </button>
+                    <button type="button" class="btn btn-primary" id="btn-confirmar-compra">
+                        <i class='bx bx-check'></i> Confirmar Compra
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <!-- About Section -->
+                <div class="footer-section">
+                    <h3>Manga Store</h3>
+                    <p>Tu tienda online de confianza para los mejores mangas. Encuentra las últimas novedades y clásicos
+                        imprescindibles.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <i class='bx bxl-facebook'></i>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <i class='bx bxl-instagram'></i>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <i class='bx bxl-twitter'></i>
+                        </a>
+                        <a href="#" aria-label="Discord">
+                            <i class='bx bxl-discord'></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class='bx bx-chevron-right'></i>Inicio</a></li>
+                        <li><a href="productos.html"><i class='bx bx-chevron-right'></i>Catálogo</a></li>
+                        <li><a href="index.html#novedades"><i class='bx bx-chevron-right'></i>Novedades</a></li>
+                        <li><a href="sobre-nosotros.html"><i class='bx bx-chevron-right'></i>Sobre Nosotros</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="footer-section">
+                    <h3>Atención al Cliente</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class='bx bx-chevron-right'></i>Preguntas Frecuentes</a></li>
+                        <li><a href="#"><i class='bx bx-chevron-right'></i>Envíos y Devoluciones</a></li>
+                        <li><a href="#"><i class='bx bx-chevron-right'></i>Términos y Condiciones</a></li>
+                        <li><a href="#"><i class='bx bx-chevron-right'></i>Política de Privacidad</a></li>
+                        <li><a href="#"><i class='bx bx-chevron-right'></i>Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class='bx bx-map'></i>
+                            <span>Buenos Aires, Argentina</span>
+                        </li>
+                        <li>
+                            <i class='bx bx-envelope'></i>
+                            <span>info@mangastore.com</span>
+                        </li>
+                        <li>
+                            <i class='bx bx-phone'></i>
+                            <span>+54 11 1234-5678</span>
+                        </li>
+                        <li>
+                            <i class='bx bx-time'></i>
+                            <span>Lun - Vie: 9:00 - 18:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 Manga Store. Desarrollado por <a href="#">Emanuel Frossasco</a>. Todos los derechos
+                    reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <!-- Toastify JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- AOS (Animate On Scroll) JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- App JS -->
+    <script src="js/productos.js"></script>
+</body>
+
+</html>
