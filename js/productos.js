@@ -12,7 +12,7 @@ const cargarProductos = async () => {
         renderizarProductos();
         AOS.init();
     } catch (error) {
-        console.error('Error al cargar productos:', error);
+        document.getElementById('lista-productos').innerHTML = '<p class="text-center">Error al cargar productos</p>';
     }
 };
 

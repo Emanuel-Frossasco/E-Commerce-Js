@@ -55,7 +55,6 @@ const fetchData = async () => {
         pintarProductos(productosDestacados);
         eventoBotones(data);
     } catch (error) {
-        console.log(error);
         mostrarNotificacion("Error al cargar los productos", "error");
     }
 };

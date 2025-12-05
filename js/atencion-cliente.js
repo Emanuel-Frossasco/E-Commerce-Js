@@ -1,4 +1,3 @@
-// Cart functionality (same as other pages)
 let carrito = [];
 const cartBadge = document.querySelector("#cart-badge");
 const cartSidebar = document.querySelector("#cart-sidebar");
@@ -11,7 +10,6 @@ const subtotalAmount = document.querySelector("#subtotal-amount");
 const btnCheckout = document.querySelector("#btn-checkout");
 const btnClearCart = document.querySelector("#btn-clear-cart");
 
-// Initialize AOS
 AOS.init({
     duration: 800,
     offset: 100,
@@ -19,7 +17,6 @@ AOS.init({
     easing: 'ease-in-out'
 });
 
-// Contact form validation and submission
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
@@ -31,13 +28,11 @@ if (contactForm) {
             return;
         }
 
-        // Get form values
         const name = document.getElementById('contact-name').value;
         const email = document.getElementById('contact-email').value;
         const subject = document.getElementById('contact-subject').value;
         const message = document.getElementById('contact-message').value;
 
-        // Show success message
         Toastify({
             text: "¡Mensaje enviado exitosamente! Te responderemos pronto.",
             duration: 4000,
@@ -53,7 +48,6 @@ if (contactForm) {
             }
         }).showToast();
 
-        // Reset form
         contactForm.reset();
         contactForm.classList.remove('was-validated');
     });

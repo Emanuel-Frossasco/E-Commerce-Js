@@ -13,7 +13,6 @@ const btnCheckout = document.querySelector("#btn-checkout");
 const btnClearCart = document.querySelector("#btn-clear-cart");
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Load cart from localStorage
     if (localStorage.getItem('carrito')) {
         carrito = JSON.parse(localStorage.getItem('carrito'));
         renderCartSidebar();
@@ -25,9 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = 'index.html';
         return;
     }
-    // Load product data
     loadProductData(productId);
-    // Setup event listeners
     setupCartListeners();
     setupQuantityControls();
     setupMobileSidebar();
